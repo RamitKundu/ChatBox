@@ -1,0 +1,35 @@
+package com.niit.ChatBoxBackEnd.DaoImpl;
+
+import java.util.List;
+
+import com.niit.ChatBoxBackEnd.Dao.EventDao;
+import com.niit.ChatBoxBackEnd.Model.Event;
+
+public class EventDaoImpl implements EventDao{
+
+	public List<Event> getAllEvent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean addEvent(Event event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean updateEvent(Event event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteEvent(Event event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Event getById(int eventId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.niit.ChatBoxRestService.Config;
+
+public class WebAppInitializer {
+
+}

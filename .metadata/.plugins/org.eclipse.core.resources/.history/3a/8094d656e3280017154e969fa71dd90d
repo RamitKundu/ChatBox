@@ -1,0 +1,5 @@
+package com.niit.ChatBoxBackEnd.Model;
+
+public class Event {
+
+}

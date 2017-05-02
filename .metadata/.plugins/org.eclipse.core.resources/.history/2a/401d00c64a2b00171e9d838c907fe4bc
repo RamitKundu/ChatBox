@@ -1,0 +1,5 @@
+package com.niit.ChatBoxRestService.Controller;
+
+public class UserController {
+
+}
