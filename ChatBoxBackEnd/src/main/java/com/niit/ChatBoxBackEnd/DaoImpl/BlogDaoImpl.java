@@ -3,7 +3,9 @@ package com.niit.ChatBoxBackEnd.DaoImpl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.ChatBoxBackEnd.Dao.BlogDao;
 import com.niit.ChatBoxBackEnd.Model.Blog;
 
-@Repository
+@Repository("blogDao")
 @Transactional
 public class BlogDaoImpl implements BlogDao{
 	
@@ -59,6 +61,12 @@ public class BlogDaoImpl implements BlogDao{
 
 	public Blog getById(int blogId) {
 		return sessionFactory.getCurrentSession().get(Blog.class, blogId);
+	}
+
+	public List<Blog>  getByUserId(int userId) {
+		return (List<Blog>) sessionFactory.getCurrentSession().createQuery("from User where userId='"+userId+"'").list();
+		
+		
 	}
 
 }

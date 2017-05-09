@@ -1,0 +1,17 @@
+package com.niit.ChatBoxRestService.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.niit.ChatBoxBackEnd.Dao.BlogDao;
+import com.niit.ChatBoxBackEnd.Model.Blog;
+
+@RestController
+public class BlogController {
+	
+	@Autowired
+	BlogDao blogDao;
+	@Autowired
+	Blog blog;
+
+}

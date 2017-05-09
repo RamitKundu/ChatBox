@@ -1,0 +1,54 @@
+package com.niit.ChatBoxBackEnd;
+
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.ChatBoxBackEnd.Dao.BlogDao;
+import com.niit.ChatBoxBackEnd.Model.Blog;
+
+public class BlogTestCase {
+	
+	@Autowired
+	private static  Blog blog;
+	@Autowired
+	private static BlogDao blogDao;
+	@Autowired
+	private static User user
+	@BeforeClass
+	public static void init(){
+		
+		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
+		context.scan("com.niit");
+		context.refresh();
+		
+		blog =(Blog) context.getBean("blog");
+		blogDao=(BlogDao) context.getBean("blogDao");
+		
+	}
+	
+	@Test
+	public void addBlogTestcase(){
+		
+		blog.setTitle("Posting blog 4");
+		blog.setDescription("Third blog");
+		blog.setStatus('B');
+		blog.setReason("asdadsdfsdffef");
+		blog.setLikes(25);
+		blog.setViews(2345);
+		blog.setUser();
+		
+		boolean flag=blogDao.addBlog(blog);
+		assertEquals("addBlogTestcase", true,flag);
+		
+	}
+	
+	
+
+	
+	}
+
+

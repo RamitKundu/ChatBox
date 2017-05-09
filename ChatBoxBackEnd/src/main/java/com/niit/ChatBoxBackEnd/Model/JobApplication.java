@@ -7,8 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
-public class JobApplication extends BaseDomain{
+public class JobApplication {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
@@ -18,8 +19,6 @@ public class JobApplication extends BaseDomain{
 	private Date dateApplied;
 	private String remarks;
 	private char status;
-	
-	
 	
 	public int getJobAppId() {
 		return jobAppId;
@@ -57,7 +56,6 @@ public class JobApplication extends BaseDomain{
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	
 	
 	
 	

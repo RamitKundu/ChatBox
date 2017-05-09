@@ -9,8 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Job extends BaseDomain{
-    @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int jobId;
 	private String title;
 	private String description;
@@ -57,5 +57,5 @@ public class Job extends BaseDomain{
 	}
 	
 	
-	
+
 }

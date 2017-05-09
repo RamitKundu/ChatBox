@@ -1,7 +1,0 @@
-127.0.0.1 - - [28/Apr/2017:10:41:08 +0530] "GET / HTTP/1.1" 404 986
-0:0:0:0:0:0:0:1 - - [28/Apr/2017:10:41:33 +0530] "GET /ChatBoxRestService/ HTTP/1.1" 404 984
-0:0:0:0:0:0:0:1 - - [28/Apr/2017:10:41:43 +0530] "GET /ChatBoxRestService/allusers HTTP/1.1" 200 701
-0:0:0:0:0:0:0:1 - - [28/Apr/2017:10:41:57 +0530] "GET /ChatBoxRestService/allusers HTTP/1.1" 200 701
-0:0:0:0:0:0:0:1 - - [28/Apr/2017:10:43:07 +0530] "GET /ChatBoxRestService/allusers HTTP/1.1" 200 701
-0:0:0:0:0:0:0:1 - - [28/Apr/2017:10:56:41 +0530] "GET /ChatBoxRestService/allusers HTTP/1.1" 200 147
-0:0:0:0:0:0:0:1 - - [28/Apr/2017:10:56:41 +0530] "GET /ChatBoxRestService/allusers HTTP/1.1" 200 147

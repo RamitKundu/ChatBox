@@ -1,30 +1,46 @@
 package com.niit.ChatBoxBackEnd.Model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="UserDetail")
-public class User {//extends BaseDomain{
+public class User extends BaseDomain{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int userId;
 	private String name;
 	private String password;
 	private String role;
+	@Column(unique=true)
 	private String email;
 	private long contact;
 	private String address;
 	private char isOnline;
 	private char status;
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="user")
+		private Set<Blog> blogs =new HashSet<Blog>();
 	
 	
+	
+	public Set<Blog> getBlogs() {
+		return blogs;
+	}
+	public void setBlogs(Set<Blog> blogs) {
+		this.blogs = blogs;
+	}
 	public int getUserId() {
 		return userId;
 	}

@@ -2,66 +2,55 @@ package com.niit.ChatBoxBackEnd.DaoImpl;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.niit.ChatBoxBackEnd.Dao.JobDao;
 import com.niit.ChatBoxBackEnd.Model.Job;
+import com.niit.ChatBoxBackEnd.Model.JobApplication;
 
-
-@Repository
-@Transactional
 public class JobDaoImpl implements JobDao{
-	
-	@Autowired
-	private SessionFactory sessionFactory;
 
-	public List<Job> getAllJob() {
-		
-		return sessionFactory.getCurrentSession().createQuery("from Job").list();
+	public List<Job> getAllOpenJobs() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public boolean addJob(Job job) {
-		
-		try{
-			 sessionFactory.getCurrentSession().save(job);
-			 return true;
-		}
-			catch(HibernateException e){
-				e.printStackTrace();
-				return false;
-			}
+	public Job getJobById(int jobId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public boolean updateJob(Job job) {
-		try{
-			 sessionFactory.getCurrentSession().update(job);;
-			 
-			 return true;
-		}
-			catch(HibernateException e){
-				e.printStackTrace();
-				return false;
-			}
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public boolean deleteJob(Job job) {
-		try{
-			 sessionFactory.getCurrentSession().delete(job);
-			 return true;
-		}
-			catch(HibernateException e){
-				e.printStackTrace();
-				return false;
-			}
+	public boolean updateJob(JobApplication jobApplication) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public Job getById(int jobId) {
-		
-		return sessionFactory.getCurrentSession().get(Job.class, jobId);
+	public boolean addJob(Job job) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean addJob(JobApplication jobApplication) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public List<Job> getAppliedJobs(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public JobApplication getJobApplication(int userId, int jobId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public JobApplication getJobApplication(int jobAppId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

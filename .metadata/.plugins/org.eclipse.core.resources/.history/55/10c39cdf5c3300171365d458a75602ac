@@ -1,0 +1,28 @@
+package com.niit.ChatBoxRestService.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.niit.ChatBoxBackEnd.Dao.BlogDao;
+import com.niit.ChatBoxBackEnd.Model.Blog;
+
+@RestController
+public class BlogController {
+	
+	@Autowired
+	BlogDao blogDao;
+	@Autowired
+	Blog blog;
+	
+	@PostMapping("/addblog")
+	public ResponseEntity<Blog> addBlog(@RequestBody Blog blog){
+		
+		 blogDao.addBlog(blog);
+		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
+	}
+
+}

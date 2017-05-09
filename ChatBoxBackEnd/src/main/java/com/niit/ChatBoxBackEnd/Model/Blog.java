@@ -2,18 +2,21 @@ package com.niit.ChatBoxBackEnd.Model;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 public class Blog extends BaseDomain{
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int blogId;
-	private int userId;
 	private String title;
 	private String description;
 	private char status;
@@ -21,7 +24,16 @@ public class Blog extends BaseDomain{
 	private String reason;
 	private int likes;
 	private int views;
+	@ManyToOne(cascade=CascadeType.ALL)
+	private User user;
 	
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 	public int getBlogId() {
@@ -30,12 +42,7 @@ public class Blog extends BaseDomain{
 	public void setBlogId(int blogId) {
 		this.blogId = blogId;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+
 	public String getTitle() {
 		return title;
 	}
