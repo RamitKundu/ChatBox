@@ -1,0 +1,26 @@
+//var UserModule=angular.module('UserModule',[]);
+
+app.service('UserService', [ '$http', '$rootScope', '$q', 'RESTURL',
+		function($http, $rootScope, $q, RESTURL) {
+
+			/*
+			 * this.addUser=function(newuser){ var deferred=$q.defer();
+			 * 
+			 * $http.post(RESTURL+'/register',newuser) .then(
+			 * function(respopnse){ deferred.resolve(respopnse.data); },
+			 * function(error){ deferred.reject(error); }); return
+			 * deferred.promise; }
+			 */
+
+			this.validate = function(email, pwd) {
+				var deferred=$q.defer();
+				$http.post(RESTURL+'/login/'+email+'/'+pwd).then(
+						 function(respopnse){ deferred.resolve(respopnse.data); },
+						 function(error){ deferred.reject(error); }); return
+						 deferred.promise;
+						  }
+			}
+
+		}
+
+])

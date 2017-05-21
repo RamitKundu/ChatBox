@@ -3,6 +3,7 @@ package com.niit.ChatBoxBackEnd.Model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Component
 @Entity
 @Table(name="UserDetail")
@@ -26,19 +30,18 @@ public class User extends BaseDomain{
 	private String role;
 	@Column(unique=true)
 	private String email;
-	private long contact;
-	private String address;
+	//private long contact;
+	//private String address;
 	private char isOnline;
 	private char status;
-	@OneToMany(fetch=FetchType.EAGER,mappedBy="user")
+	@JsonManagedReference
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="user",cascade=CascadeType.ALL)
 		private Set<Blog> blogs =new HashSet<Blog>();
-	
-	
 	
 	public Set<Blog> getBlogs() {
 		return blogs;
 	}
-	public void setBlogs(Set<Blog> blogs) {
+      public void setBlogs(Set<Blog> blogs) {
 		this.blogs = blogs;
 	}
 	public int getUserId() {
@@ -71,18 +74,18 @@ public class User extends BaseDomain{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public long getContact() {
-		return contact;
-	}
-	public void setContact(long contact) {
-		this.contact = contact;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+//	public long getContact() {
+//		return contact;
+//	}
+//	public void setContact(long contact) {
+//		this.contact = contact;
+//	}
+//	public String getAddress() {
+//		return address;
+//	}
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
 	public char getIsOnline() {
 		return isOnline;
 	}

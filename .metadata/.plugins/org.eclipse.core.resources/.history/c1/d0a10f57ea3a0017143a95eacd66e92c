@@ -1,0 +1,6 @@
+
+
+app.service('UserService',['$http','$rootScope','$q',function($http,$rootScope,$q){
+	
+	
+}])

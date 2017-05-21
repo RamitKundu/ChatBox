@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Component
 @Entity
 public class Blog extends BaseDomain{
@@ -24,6 +26,7 @@ public class Blog extends BaseDomain{
 	private String reason;
 	private int likes;
 	private int views;
+	@JsonBackReference
 	@ManyToOne(cascade=CascadeType.ALL)
 	private User user;
 	

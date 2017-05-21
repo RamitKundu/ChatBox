@@ -1,0 +1,18 @@
+<html ng-app="myApp">
+<head >
+<meta charset="ISO-8859-1">
+<title>Index</title>
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div ng-include="Header/header.html"></div>
+
+<br>
+<br>
+<br>
+<div ng-view></div>
+
+</body>
+<script src="lib/angular.js"></script>
+</html>

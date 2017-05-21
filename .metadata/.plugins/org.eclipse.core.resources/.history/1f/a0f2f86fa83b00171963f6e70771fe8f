@@ -1,0 +1,31 @@
+app.controller('UserController',['UserService','$http','$scope','$location',function(UserService,$http,$scope,$location){
+	var self=this;
+	self.user={};
+	
+	/*this.addUser=function(){
+		UserService.addUser()
+		.then(
+				function(response)
+				{
+					console.log(response.data);
+					$location.path('/user');
+				},
+				function(error){
+					console.log(error);})} */
+	
+	self.validateUser=function()
+	{
+		UserService.validate(self.email,self.pwd)
+		.then(
+				function(response)
+				{
+					console.log(response.data);
+					$location.path('/user');
+				},
+				function(error){
+					console.log(error);
+					}
+				)}
+	
+	
+}])      

@@ -1,8 +1,24 @@
-package com.niit.ChatBoxRestService.Controller;
-
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class JobController {
-
-}
+//package com.niit.ChatBoxRestService.Controller;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//import com.niit.ChatBoxBackEnd.Dao.JobDao;
+//import com.niit.ChatBoxBackEnd.Model.Job;
+//import com.niit.ChatBoxBackEnd.Model.JobApplication;
+//
+//@RestController
+//public class JobController {
+//	
+//	@Autowired
+//	JobDao jobDao;
+//	
+//	@Autowired
+//	Job job;
+//	@Autowired
+//	JobApplication jobApply;
+//	
+//	
+//	
+//
+//}

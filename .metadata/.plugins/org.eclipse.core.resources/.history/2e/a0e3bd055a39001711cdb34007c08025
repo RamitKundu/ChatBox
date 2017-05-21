@@ -1,0 +1,11 @@
+<html ng-app="myApp">
+<head >
+<meta charset="ISO-8859-1">
+<title>Index</title>
+</head>
+<body>
+<div ng-include="Header/header.html"></div>
+
+</body>
+<script src="lib/angular.js"></script>
+</html>
