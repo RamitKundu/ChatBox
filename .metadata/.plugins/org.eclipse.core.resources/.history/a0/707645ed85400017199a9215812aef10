@@ -1,0 +1,58 @@
+<style>
+form{
+  width:450px;
+  margin:30px;
+}
+input[type='text'], textarea{
+  outline:none;
+  width:100%; 
+  line-height: 35px; 
+  border: none; 
+  margin-bottom:20px; 
+  box-shadow:3px 3px 6px rgba(0,0,0,.5) inset; 
+  -webkit-box-shadow:3px 3px 6px rgba(0,0,0,.5) inset; 
+
+
+  font-size:0.813em; 
+  -webkit-box-sizing:border-box;	
+  -moz-box-sizing:border-box; 
+  box-sizing:border-box;
+  transition:all .2s; 
+   -webkit-transition:all .2s;
+}
+
+textarea{
+  width: 100%; 
+  line-height:1.308em; 
+  padding: 10px; 
+  min-height:120px; 
+  resize:vertical;
+}
+
+input[type='button']{
+		border:none;
+		text-align: left;
+		height:25px;
+		font-size:1em; color:#fff;
+		
+		padding:0 35px 0 20px;
+    border-radius:4px; 
+		
+	}
+
+
+
+</style>
+<br>
+<div ng-include="'./User/login.html'"></div>
+<br><br>
+<center>
+<form>
+  <input type="text" placeholder="Title">
+  <textarea  placeholder="Description"></textarea>
+  <input type="button" value="Post">
+</form></center>
+
+
+
+

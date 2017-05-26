@@ -1,0 +1,160 @@
+<style>
+section#contact {
+   
+    background-position: center;
+    background-repeat: no-repeat;
+}
+section {
+    padding: 30px 0PX;
+}
+section#contact .section-heading {
+    color: white;
+}
+section#contact .form-group {
+    margin-bottom: 25px;
+}
+section#contact .form-group input,
+section#contact .form-group textarea {
+    padding: 20px;
+}
+section#contact .form-group input.form-control {
+    height: auto;
+}
+section#contact .form-group textarea.form-control {
+    height: 236px;
+}
+
+
+section#contact .text-danger {
+    color: #e74c3c;
+}
+
+.about_our_company{
+    text-align: center;
+}
+.about_our_company h1{
+    font-size: 25px;
+}
+.panel-heading {
+    padding: 10px 15px;
+    background-color: #353535;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    position: absolute;
+    top: 0%;
+    cursor:pointer;
+    opacity:0.8;
+    color:white;
+    border:none;
+}
+
+.panel-body {
+    padding: 60px 4% 5% 7%;
+}
+
+.box {
+    padding:2%;
+    border:1px #ddd solid;
+    cursor:pointer;
+}
+
+
+.remove-decoration {
+    text-decoration:none !important;
+    color:#333;
+    font-size:12px;
+}
+
+/*=========================
+  Icons
+ ================= */
+
+/* footer social icons */
+ul.social-network {
+    list-style: none;
+	display: inline;
+	margin-left:0 !important;
+	padding: 0;
+}
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
+
+
+</style>
+<div ng-include="'./User/login.html'"></div>
+<br>
+
+	<section id="contact" style="">
+            <div class="container">
+                <div class="row">
+                    <div class="about_our_company" style="margin-bottom: 15px;">
+                        <h1><b>Write Your Blog</b></h1>
+                       
+                    </div>
+                <div class="col-md-4">
+                <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ7pNHU2p0-Dg-GKO_4dVSwRZaX-tawZ2pzDD6lQ-_D_Bwil8dw" /> Sri Lanka</div>
+                            <div class="panel-body text-left">
+                                <div class="row">
+                                    <div class="col-md-12 ">
+                                       
+                                            <a class="" href="#">
+                                                <img class="media-object dp img-circle" src="" style="width: 180px;height:180px;">
+                                            </a>
+                                        
+                                    </div>
+                                    <div class="col-md-12">
+
+                                        <h2>Sachith Seram</h2>
+                                        <p>Software Developer at ceymplon</p>
+                                        <p>
+                                            <a href="#" class="remove-decoration"><i class="glyphicon glyphicon-envelope"></i> poolsachitha@gmail.com</a> <br>
+                                            <a href="http://sachitha-seram.branded.me/" target="_blank" class="remove-decoration"><i class="glyphicon glyphicon-globe"></i> www.sachitha-seram.branded.me </a><br>
+                                            <a href="#" class="remove-decoration"> <i class="glyphicon glyphicon-phone"></i> +94 710 000 000</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+              
+                </div>
+        </div>
+    </div>
+               
+                       </div>    
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Your Title " id="name" required ng-model="blogCtrl.blog.title">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                  </div>
+                                    
+                               
+                                
+                                
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Your Description " id="message" required ng-model="blogCtrl.blog.description"></textarea>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-1 text-center">
+                                    <div id="success"></div>
+                                  <a href="" class="btn btn-success" ng-click="blogCtrl.createBlog()"><span class="glyphicon glyphicon-hand-up"></span>PostBlog</a>
+                                </div>
+                           </div>
+                            </div> 
+        </section>
+        

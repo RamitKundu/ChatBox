@@ -1,0 +1,49 @@
+
+app.service('BlogService',[
+	'$http',
+	'$rootScope',
+	'$q',
+	'RESTURL',
+	function($http, $rootScope, $q, RESTURL) {
+		
+		this.addBlog=function(blog){
+			var deferred=$q.defer();
+			$http.post(RESTURL + '/addblog',blog)
+			.then(
+			function(response){
+				deferred.resolve(response.data);
+				},
+				function(error){
+					deferred.reject(error);
+				});
+			return deferred.promise;
+			}		
+		
+		this.listBlog=function(bloglist){
+			console.log("Blogservice called");
+			
+			var deferred=$q.defer();
+			$http.get(RESTURL + '/getallblog')
+			.then(
+			function(response){
+				console.log(response.data);
+				deferred.resolve(response.data);
+				},
+				function(error){
+					deferred.reject(error);
+				});
+			return deferred.promise;
+			}		
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+
+	
+])
+

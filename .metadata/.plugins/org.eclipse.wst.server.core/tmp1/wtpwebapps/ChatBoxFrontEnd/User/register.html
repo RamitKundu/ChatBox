@@ -1,4 +1,11 @@
+<style>
 
+body {
+	font-family: 'Open Sans', sans-serif;
+	background: #D5D8DC;
+}
+
+</style>
 <article class="container">
 		<div class="row">
 			<div class="col-sm-8">
@@ -26,7 +33,7 @@
 
 				<div class="form-group">
 				  <label class="control-label" for="">Password</label>
-				  <input type="text" class="form-control" placeholder="Password" ng-model="userCtrl.user.password">
+				  <input type="password" class="form-control" placeholder="Password" ng-model="userCtrl.user.password">
 				</div>
 				</div>
 				
@@ -43,7 +50,7 @@
 				<div style="height:10px;"></div>
 				<div class="form-group">
 				  <label class="control-label" for=""></label>
-				  <input type="submit" class="btn btn-primary" ng-click="userCtrl.createUser()">
+				  <input type="submit" class="btn btn-primary" ng-click="userCtrl.createUser()" >
 				</div>	 
 
 				  </div>

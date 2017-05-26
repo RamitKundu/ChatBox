@@ -10,11 +10,11 @@ app.controller('UserController', [
 			self.guest={};
 			
 			self.createUser=function(){
-				
+				console.log('adduser called');
 				UserService.addUser(self.user).then(
 				function(response){
 					self.user=response.data;
-					$location.path('/home');
+					$location.path('/afterregister');
 				},function(error) {
 					console.log(error);		
 				});
@@ -22,18 +22,16 @@ app.controller('UserController', [
 
 			self.validateUser = function() {
 				console.log('validate user called');
-				console.log('self.guset');
+				//console.log('self.guset');
 				console.log(self.guest);
-				
-				UserService.validate(self.guest).then( 
+				UserService.validate(self.guest).then(
 						function(response) {
-							//console.log(response.data);
-							$scope.msg="guest.name";
-							self.user=response.data;
-							$location.path('/home');
+							console.log(response.data);
+							self.guest=response.data;
+							$location.path('/afterlogin');
 						}, function(error) {
 							console.log(error);
 						});
-			}
+			        }  
 
 		} ])

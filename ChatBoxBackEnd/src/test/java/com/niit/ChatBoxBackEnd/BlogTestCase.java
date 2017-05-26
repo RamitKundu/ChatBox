@@ -40,9 +40,9 @@ public class BlogTestCase {
 	
 	  @Test public void addBlogTestcase(){
 	  
-	  blog.setTitle("Posting blog 4"); blog.setDescription("Third blog");
+	  blog.setTitle("Posting blog 6"); blog.setDescription("Fifth blog");
 	  blog.setStatus('B'); blog.setReason("asdadsdfsdffef"); blog.setLikes(25);
-	  blog.setViews(2345); blog.setUser(userDao.getById(71));
+	  blog.setViews(2345); blog.setUser(userDao.getById(76));
 	  
 	  boolean flag=blogDao.addBlog(blog); assertEquals("addBlogTestcase",true,flag);
 	  

@@ -1,0 +1,51 @@
+<div class="services">
+<div class="col-md-4">
+    <figure class="snip1174 navy col-md-4">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample33.jpg" alt="sq-sample33" />
+      <figcaption>
+        <h2>Blogs</h2>
+        <p>
+          See or Write Blogs.....
+        </p>
+        <a href="/main/page/production">BLOGS</a>
+      </figcaption>
+    </figure>
+</div>
+<div class="col-md-4">
+    <figure class="snip1174 red col-md-4">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample33.jpg" alt="sq-sample33" />
+      <figcaption>
+        <h2>Friends</h2>
+        <p>
+         See your Friends.....
+        </p>
+        <a href="/main/page/auction">FRIENDS</a>
+      </figcaption>
+    </figure>
+</div>
+<div class="col-md-4">
+    <figure class="snip1174 navy col-md-4">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample33.jpg" alt="sq-sample33" />
+      <figcaption>
+        <h2>Events</h2>
+        <p>
+          See latest Events......
+        </p>
+        <a href="/main/page/company">EVENTS</a>
+      </figcaption>
+    </figure>
+</div>
+<div class="col-md-4">
+    <figure class="snip1174 red col-md-4">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample33.jpg" alt="sq-sample33" />
+      <figcaption>
+        <h2>Jobs</h2>
+        <p>
+         See latest Jobs...... 
+        </p>
+        <a href="/main/page/recipe">JOBS</a>
+      </figcaption>
+    </figure>
+</div>
+
+</div>

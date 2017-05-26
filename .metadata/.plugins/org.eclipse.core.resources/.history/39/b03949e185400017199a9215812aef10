@@ -1,0 +1,43 @@
+<style>
+form{
+  width:450px;
+  margin:30px;
+}
+
+}
+
+textarea{
+  width: 100%; 
+  line-height:1.308em; 
+  padding: 10px; 
+  min-height:120px; 
+  resize:vertical;
+}
+
+input[type='button']{
+		border:none;
+		text-align: left;
+		height:25px;
+		font-size:1em; color:#fff;
+		
+		padding:0 35px 0 20px;
+    border-radius:4px; 
+		
+	}
+
+
+
+</style>
+<br>
+<div ng-include="'./User/login.html'"></div>
+<br><br>
+<center>
+<form>
+  <input type="text" placeholder="Title">
+  <textarea  placeholder="Description"></textarea>
+  <input type="button" value="Post">
+</form></center>
+
+
+
+

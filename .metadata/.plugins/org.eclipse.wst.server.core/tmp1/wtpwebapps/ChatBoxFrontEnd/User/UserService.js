@@ -5,7 +5,7 @@ app.service('UserService', [
 		'$rootScope',
 		'$q',
 		'RESTURL',
-		function($http, $rootScope, $q, RESTURL) {
+	function($http, $rootScope, $q, RESTURL) {
 
 			this.addUser=function(user){
 				var deferred=$q.defer();

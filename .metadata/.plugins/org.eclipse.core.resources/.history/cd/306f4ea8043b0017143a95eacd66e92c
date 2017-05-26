@@ -1,7 +1,0 @@
-app.controller('UserController',['$http','$scope','UserService','$location','$rootScope',function($http,$scope,UserService,$rootScope,$location)
-	{
-	$scope.name
-	}
-	
-	
-	])

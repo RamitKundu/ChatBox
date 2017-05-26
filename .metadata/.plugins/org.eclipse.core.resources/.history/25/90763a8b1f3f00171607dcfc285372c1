@@ -1,0 +1,25 @@
+<<style>
+body{
+background-image: url("img/2.png")   ;
+}
+</style>
+
+
+
+
+<center>
+
+<h1><b></>Title</b></h1>
+<br>
+<br>
+<input type="text" class="span3" placeholder="Title of Blog..">
+<br>
+<br>
+<br>
+<br>
+<h1><b>Description</b></h1>
+<br>
+<br>
+<textarea class="span6" placeholder="Add Description.." ></textarea>
+
+</center>

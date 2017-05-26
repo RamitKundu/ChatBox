@@ -1,5 +1,0 @@
-<div ng-include="'login.html'"></div>
-<br>
-<br>
-<br>
-<div ng-include="'register.html'"></div>
