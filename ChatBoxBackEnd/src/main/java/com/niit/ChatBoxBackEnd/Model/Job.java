@@ -1,6 +1,7 @@
 package com.niit.ChatBoxBackEnd.Model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ public class Job extends BaseDomain{
 	private int jobId;
 	private String title;
 	private String description;
-	private Date dateTime;
+	private LocalDate dateTime;
 	private String qualification;
 	private char status;
 	
@@ -37,10 +38,11 @@ public class Job extends BaseDomain{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getDateTime() {
+	
+	public LocalDate getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(LocalDate dateTime) {
 		this.dateTime = dateTime;
 	}
 	public String getQualification() {

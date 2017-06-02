@@ -35,7 +35,7 @@ public class UserController {
 		userDao.add(newuser);
 		newuser.setErrorCode("200");
 		newuser.setErrorMessage("Thanks for registration " +newuser.getName());
-		session.setAttribute("userId", user.getUserId());
+		//session.setAttribute("userId", user.getUserId());
 
 		return new ResponseEntity<User>(newuser, HttpStatus.OK);
 	}

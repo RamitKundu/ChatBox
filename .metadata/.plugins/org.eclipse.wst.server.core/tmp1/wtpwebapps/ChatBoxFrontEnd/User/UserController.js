@@ -4,7 +4,8 @@ app.controller('UserController', [
 		'$http',
 		'$scope',
 		'$location',
-		function(UserService, $http, $scope, $location) {
+		'$rootScope',
+		function(UserService, $http, $scope, $location,$rootScope){
 			var self = this;
 			self.user = {};
 			self.guest={};
@@ -26,7 +27,8 @@ app.controller('UserController', [
 				console.log(self.guest);
 				UserService.validate(self.guest).then(
 						function(response) {
-							console.log(response.data);
+							$rootScope.currentUser=response.data;
+							console.log($rootScope.currentUser);
 							self.guest=response.data;
 							$location.path('/afterlogin');
 						}, function(error) {

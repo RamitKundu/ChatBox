@@ -1,0 +1,52 @@
+package com.niit.ChatBoxBackEnd.Model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Comment {
+    
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private int commentId;
+	private String comment;
+
+     @ManyToOne(cascade=CascadeType.ALL)
+	private User user;
+     @ManyToOne(cascade=CascadeType.ALL)
+     private Blog blog;
+     
+     
+	public int getCommentId() {
+		return commentId;
+	}
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Blog getBlog() {
+		return blog;
+	}
+	public void setBlog(Blog blog) {
+		this.blog = blog;
+	}
+	
+	
+	
+}

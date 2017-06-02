@@ -1,0 +1,4 @@
+127.0.0.1 - - [27/May/2017:10:18:50 +0530] "GET / HTTP/1.1" 404 986
+0:0:0:0:0:0:0:1 - - [27/May/2017:10:18:52 +0530] "GET /ChatBoxRestService/ HTTP/1.1" 404 984
+0:0:0:0:0:0:0:1 - - [27/May/2017:10:19:54 +0530] "GET /ChatBoxRestService/getbloguserid/77 HTTP/1.1" 200 12
+0:0:0:0:0:0:0:1 - - [27/May/2017:10:20:15 +0530] "GET /ChatBoxRestService/getbloguserid/67 HTTP/1.1" 200 12

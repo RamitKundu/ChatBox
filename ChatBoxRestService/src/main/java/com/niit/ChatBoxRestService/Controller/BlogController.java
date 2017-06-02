@@ -25,8 +25,8 @@ public class BlogController {
 	BlogDao blogDao;
 	@Autowired
 	Blog blog;
-	@Autowired
-	HttpSession session;
+//	@Autowired
+//	HttpSession session;
 	
 	@PostMapping("/addblog")
 	public ResponseEntity<Blog> addBlog(@RequestBody Blog blog){
@@ -70,7 +70,7 @@ public class BlogController {
 	@GetMapping("/getbloguserid/{userId}")
 	public ResponseEntity <List<Blog>> getBlogByUserID(@PathVariable("userId")int userId){
 		List<Blog> blog=blogDao.getByUserId(userId);
-		session.getAttribute("userId");
+		//session.getAttribute("userId");
 		
 		return new ResponseEntity<List<Blog>>(blog,HttpStatus.OK);	
 			

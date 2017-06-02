@@ -1,4 +1,0 @@
-
-<body>
-<h1>Welcome...{{userCtrl.guest.errorMessage}}</h1>
-</body>

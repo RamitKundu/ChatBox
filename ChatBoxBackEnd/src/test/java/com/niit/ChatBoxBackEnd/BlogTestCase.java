@@ -2,6 +2,7 @@ package com.niit.ChatBoxBackEnd;
 
 import static org.junit.Assert.assertEquals;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 import org.junit.BeforeClass;
@@ -20,6 +21,7 @@ public class BlogTestCase {
 	private static Blog blog;
 	@Autowired
 	private static BlogDao blogDao;
+	@SuppressWarnings("unused")
 	@Autowired
 	private static User user;
 	@Autowired
@@ -40,9 +42,9 @@ public class BlogTestCase {
 	
 	  @Test public void addBlogTestcase(){
 	  
-	  blog.setTitle("Posting blog 6"); blog.setDescription("Fifth blog");
-	  blog.setStatus('B'); blog.setReason("asdadsdfsdffef"); blog.setLikes(25);
-	  blog.setViews(2345); blog.setUser(userDao.getById(76));
+	  blog.setTitle("Posting blog 100"); blog.setDescription("TwentyFifthNineOne blog");blog.setDateTime(LocalDate.now());
+	  blog.setStatus('C'); blog.setReason("asdadsdfsdffef"); blog.setLikes(25);
+	  blog.setViews(2345); blog.setUser(userDao.getById(76));;
 	  
 	  boolean flag=blogDao.addBlog(blog); assertEquals("addBlogTestcase",true,flag);
 	  

@@ -12,61 +12,64 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ChatBoxBackEnd.Dao.BlogDao;
 import com.niit.ChatBoxBackEnd.Model.Blog;
+import com.niit.ChatBoxBackEnd.Model.User;
 
 @Repository("blogDao")
 @Transactional
-public class BlogDaoImpl implements BlogDao{
-	
+public class BlogDaoImpl implements BlogDao {
+
+	@Autowired
+	User user;
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Blog> getAllBlog() {
-		
+
 		return sessionFactory.getCurrentSession().createQuery("from Blog").list();
 	}
 
 	public boolean addBlog(Blog blog) {
-		try{
-		 sessionFactory.getCurrentSession().save(blog);
-		 return true;
-	}
-		catch(HibernateException e){
+		try {
+			sessionFactory.getCurrentSession().save(blog);
+			return true;
+		} catch (HibernateException e) {
 			e.printStackTrace();
 			return false;
 		}
-		}
+	}
 
 	public boolean updateBlog(Blog blog) {
-		try{
-			 sessionFactory.getCurrentSession().update(blog);
-			 return true;
+		try {
+			sessionFactory.getCurrentSession().update(blog);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
 		}
-			catch(HibernateException e){
-				e.printStackTrace();
-				return false;
-			}
-		
+
 	}
 
 	public boolean deleteBlog(Blog blog) {
-		try{
-			 sessionFactory.getCurrentSession().delete(blog);
-			 return true;
+		try {
+			sessionFactory.getCurrentSession().delete(blog);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
 		}
-			catch(HibernateException e){
-				e.printStackTrace();
-				return false;
-			}
 	}
 
 	public Blog getById(int blogId) {
-		return sessionFactory.getCurrentSession().get(Blog.class, blogId);
+		return (Blog) sessionFactory.getCurrentSession().get(Blog.class, blogId);
 	}
 
-	public List<Blog>  getByUserId(int userId) {
-		return (List<Blog>) sessionFactory.getCurrentSession().createQuery("from Blog where userId='"+userId+"'").list();
-		
-		
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	public List<Blog> getByUserId(int userId) {
+		return (List<Blog>) sessionFactory.getCurrentSession().createQuery("from Blog where user.getUserId=?")
+				.setParameter(0, user.getUserId()).list();
+
 	}
 
 }

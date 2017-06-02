@@ -1,4 +1,4 @@
-package com.niit.ChatBoxBackEnd.Model;
+ package com.niit.ChatBoxBackEnd.Model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,20 +30,9 @@ public class User extends BaseDomain{
 	private String role;
 	@Column(unique=true)
 	private String email;
-	//private long contact;
-	//private String address;
 	private char isOnline;
 	private char status;
-	@JsonManagedReference
-	@OneToMany(fetch=FetchType.EAGER,mappedBy="user",cascade=CascadeType.ALL)
-		private Set<Blog> blogs =new HashSet<Blog>();
 	
-	public Set<Blog> getBlogs() {
-		return blogs;
-	}
-      public void setBlogs(Set<Blog> blogs) {
-		this.blogs = blogs;
-	}
 	public int getUserId() {
 		return userId;
 	}

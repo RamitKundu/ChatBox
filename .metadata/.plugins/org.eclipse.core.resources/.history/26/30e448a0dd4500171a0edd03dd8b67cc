@@ -1,0 +1,11 @@
+package com.niit.ChatBoxBackEnd.Dao;
+
+import java.util.List;
+
+import com.niit.ChatBoxBackEnd.Model.Comment;
+
+public interface CommentDao {
+	
+public List<Comment> getAllComments();
+public boolean save(Comment comment);
+}

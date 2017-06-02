@@ -1,17 +1,23 @@
 package com.niit.ChatBoxBackEnd.Model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Component
 @Entity
@@ -22,15 +28,24 @@ public class Blog extends BaseDomain{
 	private String title;
 	private String description;
 	private char status;
-	private Date dateTime;
+	private LocalDate dateTime;
 	private String reason;
 	private int likes;
 	private int views;
-	@JsonBackReference
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private User user;
+	@JsonManagedReference(value="blogcomment_movement")
+	@OneToMany(fetch=FetchType.EAGER,mappedBy="blog",cascade=CascadeType.ALL)
+	private Set<Comments> comments=new HashSet<Comments>();
 	
 	
+	public Set<Comments> getComments() {
+		return comments;
+	}
+	public void setComments(Set<Comments> comments) {
+		this.comments = comments;
+	}
 	public User getUser() {
 		return user;
 	}
@@ -64,10 +79,11 @@ public class Blog extends BaseDomain{
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	public Date getDateTime() {
+	
+	public LocalDate getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(LocalDate dateTime) {
 		this.dateTime = dateTime;
 	}
 	public String getReason() {
@@ -88,6 +104,8 @@ public class Blog extends BaseDomain{
 	public void setViews(int views) {
 		this.views = views;
 	}
+	
+	
 	
 	
 	

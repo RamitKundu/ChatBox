@@ -1,6 +1,6 @@
 console.log("hello m at app.js");
 var app = angular.module('myApp', [ 'ngRoute' ]);
-app.constant('RESTURL', 'http://localhost:8006/ChatBoxRestService');
+app.constant('RESTURL', 'http://localhost:8002/ChatBoxRestService');
 
 app.config(function($routeProvider, $locationProvider) {
 	console.log("hello m at app.js")
@@ -27,10 +27,10 @@ app.config(function($routeProvider, $locationProvider) {
 		controllerAs : 'blogCtrl'
 	})
 
-	.when('/getallblogs', {
-		templateUrl : 'Blog/BlogList.html',
-		controller : 'BlogController',
-		controllerAs : 'blogCtrl'
-	});
+//	.when('/getallblogs', {
+//	templateUrl : 'Blog/BlogList.html',
+//	controller : 'BlogController',
+//   controllerAs : 'blogCtrl'
+//	});
 
 });

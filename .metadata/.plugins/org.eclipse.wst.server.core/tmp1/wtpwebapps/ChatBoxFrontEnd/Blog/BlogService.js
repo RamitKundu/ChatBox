@@ -35,6 +35,24 @@ app.service('BlogService',[
 				});
 			return deferred.promise;
 			}		
+		
+//
+//		this.myBlogs=function(){
+//			console.log("MYBlogservice called");
+//			
+//			var deferred=$q.defer();
+//			$http.get(RESTURL + '/getallblog')
+//			.then(
+//			function(response){
+//				/*this.blogList=response.data;
+//				console.log(this.blogList);*/
+//				deferred.resolve(response);
+//				},
+//				function(error){
+//					deferred.reject(error);
+//				});
+//			return deferred.promise;
+//			}		
 	
 	
 
