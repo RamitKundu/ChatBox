@@ -67,8 +67,8 @@ public class BlogDaoImpl implements BlogDao {
 
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Blog> getByUserId(int userId) {
-		return (List<Blog>) sessionFactory.getCurrentSession().createQuery("from Blog where user.getUserId=?")
-				.setParameter(0, user.getUserId()).list();
+		return (List<Blog>) sessionFactory.getCurrentSession().createQuery("from Blog where user.userId='"+userId+"'").list();
+				
 
 	}
 

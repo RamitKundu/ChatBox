@@ -33,6 +33,18 @@ public class User extends BaseDomain{
 	private char isOnline;
 	private char status;
 	
+//	@JsonManagedReference(value="user_blog movement")
+//	@OneToMany(fetch=FetchType.EAGER,mappedBy="user",cascade=CascadeType.ALL)
+//	private Set<Blog> blog=new HashSet<Blog>();
+//	
+//	
+//	
+//	public Set<Blog> getBlog() {
+//		return blog;
+//	}
+//	public void setBlog(Set<Blog> blog) {
+//		this.blog = blog;
+//	}
 	public int getUserId() {
 		return userId;
 	}

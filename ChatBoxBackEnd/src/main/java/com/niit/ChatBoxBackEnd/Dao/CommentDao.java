@@ -8,4 +8,5 @@ public interface CommentDao {
 	
 public List<Comments> getAllComments();
 public boolean save(Comments comments);
+
 }

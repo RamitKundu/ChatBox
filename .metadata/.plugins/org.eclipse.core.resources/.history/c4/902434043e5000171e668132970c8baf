@@ -1,0 +1,25 @@
+app.controller('JobController', [ 'JobService', '$http', '$scope',
+		'$location','$rootScope', function(BlogService, $http, $scope, $location,$rootScope) {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    }
+])

@@ -1,43 +1,71 @@
 package com.niit.ChatBoxBackEnd.Model;
 
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import org.springframework.stereotype.Component;
 
+@Component("jobapp")
 @Entity
 public class JobApplication {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int jobAppId;
-	private int userId;
-	private int jobId;
+	//private int userId;
+	//private int jobId;
+	private String qualification;
+	
 	private Date dateApplied;
 	private String remarks;
 	private char status;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private User user;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Job job;
+	
+	
+	
+	
+	
+	public Job getJob() {
+		return job;
+	}
+	public void setJob(Job job) {
+		this.job = job;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public int getJobAppId() {
 		return jobAppId;
 	}
 	public void setJobAppId(int jobAppId) {
 		this.jobAppId = jobAppId;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public int getJobId() {
-		return jobId;
-	}
-	public void setJobId(int jobId) {
-		this.jobId = jobId;
-	}
+//	public int getUserId() {
+//		return userId;
+//	}
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
+//	public int getJobId() {
+//		return jobId;
+//	}
+//	public void setJobId(int jobId) {
+//		this.jobId = jobId;
+//	}
 	public Date getDateApplied() {
 		return dateApplied;
 	}
@@ -55,6 +83,12 @@ public class JobApplication {
 	}
 	public void setStatus(char status) {
 		this.status = status;
+	}
+	public String getQualification() {
+		return qualification;
+	}
+	public void setQualification(String qualification) {
+		this.qualification = qualification;
 	}
 	
 	

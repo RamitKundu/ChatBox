@@ -12,7 +12,7 @@ import com.niit.ChatBoxBackEnd.Dao.JobDao;
 import com.niit.ChatBoxBackEnd.Model.Job;
 import com.niit.ChatBoxBackEnd.Model.JobApplication;
 
-@Repository
+@Repository("jobDao")
 @Transactional
 public class JobDaoImpl implements JobDao{
 	

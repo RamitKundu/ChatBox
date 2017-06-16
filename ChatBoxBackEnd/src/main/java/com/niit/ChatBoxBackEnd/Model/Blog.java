@@ -1,7 +1,7 @@
 package com.niit.ChatBoxBackEnd.Model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Date;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,11 +28,11 @@ public class Blog extends BaseDomain{
 	private String title;
 	private String description;
 	private char status;
-	private LocalDate dateTime;
+	private Date dateTime;
 	private String reason;
 	private int likes;
 	private int views;
-	
+	//@JsonBackReference(value="user_blog movement")
 	@ManyToOne(cascade=CascadeType.ALL)
 	private User user;
 	@JsonManagedReference(value="blogcomment_movement")
@@ -80,10 +80,10 @@ public class Blog extends BaseDomain{
 		this.status = status;
 	}
 	
-	public LocalDate getDateTime() {
+	public Date getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(LocalDate dateTime) {
+	public void setDateTime(Date dateTime) {
 		this.dateTime = dateTime;
 	}
 	public String getReason() {

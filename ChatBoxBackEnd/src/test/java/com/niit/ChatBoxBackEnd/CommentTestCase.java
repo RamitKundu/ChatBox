@@ -47,9 +47,9 @@ public class CommentTestCase {
 
 	@Test
 	public void addComment() {
-		comments.setCommentDsp("ABCDEfhghg");
+		comments.setCommentDsp("TESTING");
 		comments.setBlog(blogDao.getById(75));
-		comments.setUser(userDao.getById(71));
+		comments.setUser(userDao.getById(76));
 		boolean flag = commentDao.save(comments);
 		assertEquals("addComment", true, flag);
 	}

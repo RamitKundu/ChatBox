@@ -1,0 +1,10 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+<div class="panel panel-default">
+<div class="panel-body">
+
+
+
+</div>
+</div>

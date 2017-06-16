@@ -3,14 +3,22 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
 			var self = this;
 			self.blog = {};
 			self.bloglist = [];
+			//self.selectBlog=[];
 			self.allBlogs=false;
 			self.writeBlog=true;
-			self.myBlog=false;
+			self.myBlog=[];
+			self.myBlogList=false;
+			//self.comment={};
+			self.sendblogobj=false;
+			self.comments=[];
+			
 			
 			
 			self.createBlog = function() {
-				
+				self.blog.user=$rootScope.currentUser;
+				self.blog.user=$rootScope.currentRegUser;
 				console.log("Blog controller called");
+				console.log(self.blog.guest);
 				BlogService.addBlog(self.blog).then(function(response) {
 					self.blog = response.data;
 					$location.path('/home');
@@ -20,6 +28,7 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
 			}
 
 			self.getBlogList = function() {
+				
 				console.log("BlogList controller called");
 				BlogService.listBlog().then(function(response) {
 					self.bloglist = response.data;
@@ -32,23 +41,55 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
 				});
 			}
 			
-			self.getmyBlog = function() {
+			self.getmyBlog= function() {
+				//self.blog.user=$rootScope.currentUser;
 				console.log("show my MyBlogList ");
-				BlogService.myBlogs().then(function(response) {
+				
+				BlogService.myBlogs($rootScope.currentUser.userId).then(function(response) {
 					
-					$rootScope.currentUserID=response.useId;
-					self.bloglist = response.data;
+					 //$rootScope.currentUser.userId;
+					console.log(self.blog.user);
+					self.myBlog = response.data;
 					console.log(self.bloglist);
 					 //$location.path('/getallblogs');
-					self.myBlog=true;
+					self.myBlogList=true;
+					self.allBlogs=false;;
+					self.writeBlog=false;
 				}, function(error) {
 					console.log(error);
 				});
 			}
 			
 				
+
+			self.createComment=function() {
+				//self.blog.user=$rootScope.currentUser;
+				console.log("Comment called");
+				//console.log(self.blog.guest);
+				BlogService.addComment(self.comment).then(function(response) {
+					self.comment = response.data;
+					$location.path('/cmmnt');
+				}, function(error) {
+					console.log(error);
+				});
+			}
+	
+
+			self.sendBlog= function(blg) {
+				console.log("sendBlog called")
+				self.selectedBlog=blg;
+				console.log(self.selectedBlog)
+				self.sendblogobj=true;	
+				self.myBlogList=false;
+				self.allBlogs=false;;
+				self.writeBlog=false;
+				self.commentList=self.selectedBlog.comments;
+				console.log(self.selectedBlog.comments)
 				
 				
+				
+			}
+	
 				
 				
 				

@@ -1,5 +1,6 @@
 package com.niit.ChatBoxRestService.Controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.ChatBoxBackEnd.Dao.BlogDao;
 import com.niit.ChatBoxBackEnd.Model.Blog;
+import com.niit.ChatBoxBackEnd.Model.User;
 
 @RestController
 public class BlogController {
@@ -25,12 +27,12 @@ public class BlogController {
 	BlogDao blogDao;
 	@Autowired
 	Blog blog;
-//	@Autowired
-//	HttpSession session;
+	
 	
 	@PostMapping("/addblog")
 	public ResponseEntity<Blog> addBlog(@RequestBody Blog blog){
 		 blog.setStatus('N');
+		 blog.setDateTime(new Date());
 		 blogDao.addBlog(blog);
 		 blog.setErrorCode("200");
 		 blog.setErrorMessage("Blog successfully created");

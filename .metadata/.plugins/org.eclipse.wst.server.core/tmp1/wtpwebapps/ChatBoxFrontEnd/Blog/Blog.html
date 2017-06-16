@@ -44,6 +44,23 @@ section#contact .text-danger {
 .click h1 {
 	font-size: 25px;
 }
+input {
+    border: none;
+    background: transparent;
+}
+.container1{
+width:895px;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 </style>
 <div ng-include="'./User/login.html'"></div>
 <div ng-include="'./User/UserProfile.html'"></div>
@@ -97,9 +114,9 @@ section#contact .text-danger {
 							<b>Click to see Other links</b>
 						</h1>
 					</div>
-					<li><a href="#" class="btn btn-success"><span
+					<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
 							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li>
-					<li><a href="" class="btn btn-success"
+					<li><a href class="btn btn-success"
 						ng-click="blogCtrl.getBlogList()"><span
 							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
 					<li><a href="#" class="btn btn-success"><span
@@ -131,14 +148,73 @@ section#contact .text-danger {
 
 					</div>
 					<div class="panel-footer">
-<div class="row">
-	<a href="" class="btn btn-default"><span class="glyphicon glyphicon-comment"></span>Comments</a> 
-	<input type="text" class="form-control" placeholder="Your Comment " id="name" required ng-model="blogCtrl.blog.comments">
-	<input type="text" class="form-control" value="comments" id="name"  ng-model="blogCtrl.blog.comments">
-	
-	</div>
-</div>
+
+						<span class="glyphicon glyphicon-comment" id="comment"></span> 
+							<a href id="comments" ng-click="blogCtrl.sendBlog(blg)">Comments</a> 
+
 					</div>
+					</div>
+					
+					</div>
+					</div>
+					
+					</div>
+				</div>
+		
+	<div class="col-md-3">
+		<div class="click">
+			<h1>
+				<b>Click to see Other links</b>
+			</h1>
+		</div>
+		<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+				class="glyphicon glyphicon-hand-up" ></span>SeeMyBlog</a><br> <br></li>
+		<li><a href class="btn btn-success"
+			ng-click="blogCtrl.getBlogList()"><span
+				class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
+		<li><a href="#" class="btn btn-success"><span
+				class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
+	</div>
+
+</div>
+
+					
+					
+					
+	<!-- ---------------------------------------------Comments----------------------------------------------------------------- -->				
+		<div ng-show="blogCtrl.sendblogobj" class="row">
+		
+	 <div class="col-md-9">
+		<div class="row" >
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong><a class="post-title" href=""><b>{{blogCtrl.selectedBlog.title}}</b></a></strong>
+					</div>
+					<div class="panel-body">
+
+						<p>{{blogCtrl.selectedBlog.description}}</p>
+
+
+					</div>
+					
+                     <div class="panel-footer" data-ng-repeat="cmmnt in blogCtrl.commentList">
+                      
+                      {{cmmnt.commentDsp}}
+                      </div>
+
+					
+				</div>
+				
+				<center><b>Add Comments:</b></center><br>
+				
+				<input type="text" placeholder="Join The Discussion...." size="80" style="border:2px solid #85C1E9"/>
+				
+				<center><a href="" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-hand-up" ng-click="blogCtrl.createComment()"></span>PostBlog</a></center>
+				
+				
+				<div>
+				
 				</div>
 			</div>
 		</div>
@@ -150,22 +226,25 @@ section#contact .text-danger {
 				<b>Click to see Other links</b>
 			</h1>
 		</div>
-		<li><a href="#" class="btn btn-success"><span
-				class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li>
-		<li><a href="" class="btn btn-success"
-			ng-click="blogCtrl.getBlogList()"><span
-				class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
-		<li><a href="#" class="btn btn-success"><span
-				class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
+		<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+				class="glyphicon glyphicon-hand-up" ></span>SeeMyBlog</a><br> <br></li>
+		<li><a href class="btn btn-success" ng-click="blogCtrl.getBlogList()">
+		<span class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
+		<li><a href="" class="btn btn-success"><span class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
 	</div>
 
-
 </div>
+   
+	<!-- -------------------------------------------------------------------------------------------------------------- -->				
+					
+					
+
+
 <!-- ---------------------------------------------------my Blogs---------------------------------------------------->
 
-<div ng-show="blogCtrl.myBlog" class="row">
+<div ng-show="blogCtrl.myBlogList" class="row">
 	<div class="col-md-9">
-		<div class="row" data-ng-repeat="blg in blogCtrl.getmyBlog">
+		<div class="row" data-ng-repeat="blg in blogCtrl.myBlog">
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -180,7 +259,7 @@ section#contact .text-danger {
 					<div class="panel-footer">
 
 						<span class="glyphicon glyphicon-comment" id="comment"></span> <a
-							href="" id="comments">Comments</a> |
+							href="" id="comments">Comments</a> 
 
 					</div>
 				</div>
@@ -194,13 +273,11 @@ section#contact .text-danger {
 				<b>Click to see Other links</b>
 			</h1>
 		</div>
-		<li><a href="#" class="btn btn-success"><span
-				class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li>
-		<li><a href="" class="btn btn-success"
-			ng-click="blogCtrl.getBlogList()"><span
-				class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
-		<li><a href="#" class="btn btn-success"><span
-				class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
+		<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+				class="glyphicon glyphicon-hand-up" ></span>SeeMyBlog</a><br> <br></li>
+		<li><a href class="btn btn-success" ng-click="blogCtrl.getBlogList()">
+		<span class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
+		<li><a href="" class="btn btn-success"><span class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
 	</div>
 
 </div>

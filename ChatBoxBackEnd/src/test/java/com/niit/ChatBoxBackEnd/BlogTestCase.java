@@ -2,6 +2,7 @@ package com.niit.ChatBoxBackEnd;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ public class BlogTestCase {
 	
 	  @Test public void addBlogTestcase(){
 	  
-	  blog.setTitle("Posting blog 100"); blog.setDescription("TwentyFifthNineOne blog");blog.setDateTime(LocalDate.now());
+	  blog.setTitle("Posting blog 100"); blog.setDescription("Hobe na blog");blog.setDateTime(new Date());
 	  blog.setStatus('C'); blog.setReason("asdadsdfsdffef"); blog.setLikes(25);
 	  blog.setViews(2345); blog.setUser(userDao.getById(76));;
 	  

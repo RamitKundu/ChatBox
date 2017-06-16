@@ -1,0 +1,39 @@
+package com.niit.ChatBoxRestService.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.niit.ChatBoxBackEnd.Dao.JobDao;
+import com.niit.ChatBoxBackEnd.Model.Job;
+import com.niit.ChatBoxBackEnd.Model.JobApplication;
+
+@RestController
+public class JobController {
+	
+	@Autowired
+	JobDao jobDao;
+	
+	@Autowired
+	Job job;
+	@Autowired
+	JobApplication jobApply;
+	
+	
+	
+	@PostMapping("/addjob")
+	public ResponseEntity<Job> addJob(@RequestBody Job job){
+		
+		jobDao.addJob(job);
+		
+		return new ResponseEntity<Job>(job,HttpStatus.OK);
+		
+	}
+	
+	
+	
+
+}

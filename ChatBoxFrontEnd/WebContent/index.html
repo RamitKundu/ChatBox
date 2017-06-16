@@ -2,6 +2,7 @@
 <head >
 <meta charset="ISO-8859-1">
 <title>Index</title>
+<!-- <base href="/" /> -->
 <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
@@ -10,6 +11,11 @@
 <body>
 
 <div ng-view></div>
+
+<footer>
+<div ng-include="'User/Footer.html'"></div>
+
+</footer>
 </body>
 
 <!-- jquery and bootstrap -->
@@ -21,6 +27,7 @@
 
 <script src="lib/angular.js"></script>
 <script src="lib/angular-route.js"></script>
+<script src="lib/angular-cookies.js"></script>
 
 <!-- Custom js files -->
 
@@ -29,4 +36,6 @@
 <script src="User/UserService.js"></script>
 <script src="Blog/BlogController.js"></script>
 <script src="Blog/BlogService.js"></script>
+<script src="Job/JobController.js"></script>
+<script src="Job/JobService.js"></script>
 </html>

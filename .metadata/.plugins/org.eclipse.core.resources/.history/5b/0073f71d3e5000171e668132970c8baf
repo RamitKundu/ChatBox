@@ -1,0 +1,35 @@
+app.service('BlogService',[
+	'$http',
+	'$rootScope',
+	'$q',
+	'RESTURL',
+	function($http, $rootScope, $q, RESTURL) {
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	
+])
+

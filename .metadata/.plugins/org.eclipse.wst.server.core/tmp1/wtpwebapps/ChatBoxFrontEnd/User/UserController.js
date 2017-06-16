@@ -5,7 +5,8 @@ app.controller('UserController', [
 		'$scope',
 		'$location',
 		'$rootScope',
-		function(UserService, $http, $scope, $location,$rootScope){
+		'$cookieStore',
+		function(UserService, $http, $scope, $location,$rootScope,$cookieStore){
 			var self = this;
 			self.user = {};
 			self.guest={};
@@ -13,8 +14,10 @@ app.controller('UserController', [
 			self.createUser=function(){
 				console.log('adduser called');
 				UserService.addUser(self.user).then(
-				function(response){
-					self.user=response.data;
+				function(data){
+					self.user=data;
+					$rootScope.currentRegUser=self.user;
+					console.log($rootScope.currentRegUser);
 					$location.path('/afterregister');
 				},function(error) {
 					console.log(error);		
@@ -26,10 +29,14 @@ app.controller('UserController', [
 				//console.log('self.guset');
 				console.log(self.guest);
 				UserService.validate(self.guest).then(
-						function(response) {
-							$rootScope.currentUser=response.data;
+						function(data) {
+							//console.log(response);
+							self.guest=data;
+							console.log(data);
+							$rootScope.currentUserName=data.name;
+							$rootScope.currentUser=self.guest;
 							console.log($rootScope.currentUser);
-							self.guest=response.data;
+							self.guest=data;
 							$location.path('/afterlogin');
 						}, function(error) {
 							console.log(error);

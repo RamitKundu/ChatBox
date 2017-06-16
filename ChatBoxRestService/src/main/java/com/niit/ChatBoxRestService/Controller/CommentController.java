@@ -32,8 +32,8 @@ public class CommentController {
 	@PostMapping("/addcomments")
 	public ResponseEntity<Comments> addComment(@RequestBody Comments cmmnt){
 		cmmntDao.save(cmmnt);
-		cmmnt.setBlog(blog);
-		cmmnt.setUser(user);
+//		cmmnt.setBlog(blog);
+//		cmmnt.setUser(user);
 		return new ResponseEntity<Comments>(cmmnt,HttpStatus.OK);
 	
 	}
