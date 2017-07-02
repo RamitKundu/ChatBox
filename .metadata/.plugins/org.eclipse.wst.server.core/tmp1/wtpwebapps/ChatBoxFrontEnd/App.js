@@ -21,8 +21,14 @@ app.config(function($routeProvider, $locationProvider) {
 
 	})
 
+//	.when('/blog', {
+//		templateUrl : 'Blog/Blog.html',
+//	    controller : 'BlogController',
+//		controllerAs : 'blogCtrl'
+//	})
+	
 	.when('/blog', {
-		templateUrl : 'Blog/Blog.html',
+		templateUrl : './BlogRepeat/MasterBlog.html',
 	    controller : 'BlogController',
 		controllerAs : 'blogCtrl'
 	})
@@ -33,16 +39,17 @@ app.config(function($routeProvider, $locationProvider) {
 		controllerAs : 'jobCtrl'
 
 	})
-	.when('/thankyou', {
-
-		templateUrl : 'Job/ThankYou.html',
-
-	})
-	.when('/back', {
-
-		templateUrl : 'Job/Job.html',
-
-	})
+//	.when('/thankyou', {
+//
+//		templateUrl : 'Job/ThankYou.html',
+//
+//	})
+//	.when('/back', {
+//
+//		templateUrl : 'Job/Job.html',
+//		
+//
+//	})
 
 
 

@@ -1,0 +1,72 @@
+package com.niit.ChatBoxRestService.Controller;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.niit.ChatBoxBackEnd.Dao.FriendDao;
+
+import com.niit.ChatBoxBackEnd.Model.Friend;
+
+@RestController
+public class FriendController {
+	
+	@Autowired
+	FriendDao fDao;
+	
+	@PostMapping("/sendrequest")
+	public ResponseEntity<Void> sendFriendReq(@RequestBody Friend friend){
+		if(fDao.addFreind(friend)==true){
+			Friend f=new Friend();
+			
+			f.setUser(friend.getFriend());
+			f.setFriend(friend.getUser());
+			f.setStatus("New");
+			f.setInitiator(0);	
+			fDao.addFreind(f);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}else{
+		 
+		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+	}
+	}
+	@PutMapping("/acceptfrnd")
+	public ResponseEntity<Void> accpt_rjctFrndrqst(@RequestBody Friend friend){
+		
+		if(fDao.updateFriend(friend)==true){
+			friend.setErrorCode("200");
+			friend.setErrorMessage("User is updated from frontend");
+//			int friendId=friend.getFriend().getUserId();
+//			int userId=friend.getUser().getUserId();
+		Friend friend1=fDao.getByid(friend.getFriend().getUserId(),friend.getUser().getUserId());
+			friend1.setStatus(friend.getStatus());
+			fDao.updateFriend(friend1);
+			
+			return new ResponseEntity<Void>(HttpStatus.OK);
+			
+		}else{
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
+			
+		}
+		
+		
+		
+		
+		
+		
+	
+	
+	
+	
+		
+	}
+	
+
+

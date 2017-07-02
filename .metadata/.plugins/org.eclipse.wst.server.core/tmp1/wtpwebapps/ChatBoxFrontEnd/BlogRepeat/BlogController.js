@@ -1,0 +1,27 @@
+app.controller('BlogController',['$scope','$rootScope','BlogService',function($scope,$rootScope,BlogService){
+
+	var self=this;
+	
+	self.addBlog = function(){
+		console.log("Blog controller called")
+		self.blog.status="New";           //name blog obj same name as in ng-model"we r attaching another field"
+		BlogService.createBlog(self.blog).then(function(response){    //passing all the attached fields with blog	
+			alert("Your Blog is created and is waiting for approval")
+			
+		},function(error){
+			alert("Kindly wait for the approval")
+			
+		});
+}
+	
+	
+
+
+
+
+
+
+
+
+
+}])

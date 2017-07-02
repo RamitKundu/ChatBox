@@ -1,0 +1,56 @@
+console.log("hello m at app.js");
+var app = angular.module('myApp', [ 'ngRoute','ngCookies' ]);
+app.constant('RESTURL', 'http://localhost:8005/ChatBoxRestService');
+
+app.config(function($routeProvider, $locationProvider) {
+	console.log("hello m at app.js")
+	$routeProvider.when('/', {
+		templateUrl : 'User/Home.html',
+		controller : 'UserController',
+		controllerAs : 'userCtrl'
+	})
+
+	.when('/afterregister', {
+		templateUrl : 'User/AfterLogin.html',
+
+	})
+
+	.when('/afterlogin', {
+
+		templateUrl : 'User/AfterLogin.html',
+
+	})
+
+//	.when('/blog', {
+//		templateUrl : 'Blog/Blog.html',
+//	    controller : 'BlogController',
+//		controllerAs : 'blogCtrl'
+//	})
+	
+	.when('/blog', {
+		templateUrl : 'BlogRepeat/MasterBlog.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
+	
+	.when('/jobs', {
+		templateUrl : 'Job/Job.html',
+		controller : 'JobController',
+		controllerAs : 'jobCtrl'
+
+	})
+//	.when('/thankyou', {
+//
+//		templateUrl : 'Job/ThankYou.html',
+//
+//	})
+//	.when('/back', {
+//
+//		templateUrl : 'Job/Job.html',
+//		
+//
+//	})
+
+
+
+});

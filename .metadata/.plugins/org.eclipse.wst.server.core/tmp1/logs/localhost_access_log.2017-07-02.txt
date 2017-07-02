@@ -1,0 +1,15 @@
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:00:27 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 404 984
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:01:10 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 404 984
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:01:18 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 404 984
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:03:30 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 404 984
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:03:32 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 404 984
+127.0.0.1 - - [02/Jul/2017:00:04:50 +0530] "GET / HTTP/1.1" 404 986
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:04:51 +0530] "GET /ChatBoxRestService/ HTTP/1.1" 404 984
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:05:23 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 200 403
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:06:18 +0530] "GET /ChatBoxRestService/getallsentrqst/76 HTTP/1.1" 200 403
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:06:32 +0530] "GET /ChatBoxRestService/getallsentrqst/76 HTTP/1.1" 200 403
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:07:07 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 200 403
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:07:48 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/76 HTTP/1.1" 200 12
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:10:31 +0530] "GET /ChatBoxRestService/getallsentrqst/76 HTTP/1.1" 200 403
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:14:06 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/76 HTTP/1.1" 200 12
+0:0:0:0:0:0:0:1 - - [02/Jul/2017:00:14:59 +0530] "GET /ChatBoxRestService/getallmyfrndrqst/71 HTTP/1.1" 200 403

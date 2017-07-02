@@ -6,11 +6,13 @@ app.controller('JobController', [ 'JobService', '$http', '$scope',
 	     self.jobapp={};
 	     self.joblist = [];
 	     self.allJobs=false;
-	     self.writeJobs=true;
+	     self.frontpage=true;
+	     self.thanks=false;
 
 			self.createJob = function() {
 				
 				console.log("Job controller called");
+				
 				//console.log(self.blog.guest);
 				JobService.addJob(self.job).then(function(response) {
 					self.job = response.data;
@@ -30,19 +32,27 @@ app.controller('JobController', [ 'JobService', '$http', '$scope',
 					 //$location.path('/getallblogs');
 					self.allJobs=true;
 					self.writeJobs=false;
-//					self.writeBlog=false;
+					 self.frontpage=false;
 				}, function(error) {
 					console.log(error);
 				});
 			}
 	
-             self.createJobApply = function() {
+             self.createJobApply = function(j) {
 				
 				console.log("JobApply controller called");
+				var data={
+						
+						user:$rootScope.currentUser,
+						job:j
+				}
 				//console.log(self.blog.guest);
-				JobService.addJobapply(self.jobapp).then(function(response) {
-					self.jobapp = response.data;
-					$location.path('/thankyou');
+				JobService.addJobapply(data).then(function(response) {
+					
+					self.thanks=true;
+					self.allJobs=false;
+					 self.frontpage=false;    
+				     
 				}, function(error) {
 					console.log(error);
 				});

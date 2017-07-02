@@ -27,7 +27,7 @@ public class Blog extends BaseDomain{
 	private int blogId;
 	private String title;
 	private String description;
-	private char status;
+	private String status;
 	private Date dateTime;
 	private String reason;
 	private int likes;
@@ -73,10 +73,10 @@ public class Blog extends BaseDomain{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	

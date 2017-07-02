@@ -25,8 +25,8 @@ app.service('UserService', [
 				var deferred = $q.defer();
 				$http.post(RESTURL + '/login',guest).then(
 						function(response) {
-							//console.log(response.data);
-							console.log(response);
+							console.log(response.data);
+							//console.log(response);
 							deferred.resolve(response.data);
 						}, function(error) {
 							deferred.reject(error);

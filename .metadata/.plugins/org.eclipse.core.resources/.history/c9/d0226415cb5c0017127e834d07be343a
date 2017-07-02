@@ -1,0 +1,8 @@
+package com.niit.ChatBoxBackEnd.Dao;
+
+import com.niit.ChatBoxBackEnd.Model.Friend;
+
+public interface FriendDao {
+	public boolean addFreind(Friend friend);
+
+}

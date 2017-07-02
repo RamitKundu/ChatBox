@@ -15,9 +15,10 @@ app.controller('UserController', [
 				console.log('adduser called');
 				UserService.addUser(self.user).then(
 				function(data){
+				
 					self.user=data;
-					$rootScope.currentRegUser=self.user;
-					console.log($rootScope.currentRegUser);
+					//$rootScope.currentRegUser=self.user;
+					//console.log($rootScope.currentRegUser);
 					$location.path('/afterregister');
 				},function(error) {
 					console.log(error);		
@@ -31,14 +32,18 @@ app.controller('UserController', [
 				UserService.validate(self.guest).then(
 						function(data) {
 							//console.log(response);
+							
 							self.guest=data;
-							console.log(data);
+							
+							console.log(self.guest);
 							$rootScope.currentUserName=data.name;
 							$rootScope.currentUser=self.guest;
 							console.log($rootScope.currentUser);
 							self.guest=data;
 							$location.path('/afterlogin');
+							
 						}, function(error) {
+							alert("Invalid Credentials......Please Login Again.");
 							console.log(error);
 						});
 			        }  

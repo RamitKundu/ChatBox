@@ -114,22 +114,22 @@ input[type=text], select {
 							<b>Click to see Other links</b>
 						</h1>
 					</div>
-					<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
-							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li>
-					<li><a href class="btn btn-success"
+	<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success"
 						ng-click="blogCtrl.getBlogList()"><span
-							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
-					<li><a href="#" class="btn btn-success"><span
-							class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
+							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role=='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getAdminBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li></div>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
-<!---------------------------------------------------- all blogs ------------------------------------------------->
+<!---------------------------------------------------- all blogs --------------------------------------------------------->
 
 
-<div ng-show="blogCtrl.allBlogs" class="row">
+<div ng-show="blogCtrl.allBlogs && {{currentUser.status=='A'}}" class="row">
 	<div class="col-md-9">
 		<div class="row" data-ng-repeat="blg in blogCtrl.bloglist">
 			<div class="col-md-12">
@@ -139,8 +139,10 @@ input[type=text], select {
 						<strong><a class="post-title" href=""><b>{{blg.title}}</b></a></strong>
 					</div>
 					<div class="col-md-3">
-					<a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+					<b>By:{{blg.user.name}}</b>
 					</div>
+					
+					
 					<div class="panel-body">
 
 						<p>{{blg.description}}</p>
@@ -148,18 +150,19 @@ input[type=text], select {
 
 					</div>
 					<div class="panel-footer">
-
+					
+                      
 						<span class="glyphicon glyphicon-comment" id="comment"></span> 
-							<a href id="comments" ng-click="blogCtrl.sendBlog(blg)">Comments</a> 
-
+							<a href id="comments" ng-click="blogCtrl.sendBlog(blg)">AddComments</a> 
+                       </div>
+             	</div>
+					</div>
+					
 					</div>
 					</div>
 					
 					</div>
-					</div>
-					
-					</div>
-				</div>
+				
 		
 	<div class="col-md-3">
 		<div class="click">
@@ -167,13 +170,13 @@ input[type=text], select {
 				<b>Click to see Other links</b>
 			</h1>
 		</div>
-		<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
-				class="glyphicon glyphicon-hand-up" ></span>SeeMyBlog</a><br> <br></li>
-		<li><a href class="btn btn-success"
-			ng-click="blogCtrl.getBlogList()"><span
-				class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
-		<li><a href="#" class="btn btn-success"><span
-				class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
+		<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success"
+						ng-click="blogCtrl.getBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role=='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getAdminBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li></div>
 	</div>
 
 </div>
@@ -181,7 +184,7 @@ input[type=text], select {
 					
 					
 					
-	<!-- ---------------------------------------------Comments----------------------------------------------------------------- -->				
+<!-- --------------------------------------------------Add Comments For all Blogs----------------------------------------------------------------- -->				
 		<div ng-show="blogCtrl.sendblogobj" class="row">
 		
 	 <div class="col-md-9">
@@ -197,22 +200,22 @@ input[type=text], select {
 
 
 					</div>
-					
+					 
                      <div class="panel-footer" data-ng-repeat="cmmnt in blogCtrl.commentList">
                       
                       {{cmmnt.commentDsp}}
-                      </div>
+                      </div> 
 
 					
 				</div>
 				
-				<center><b>Add Comments:</b></center><br>
+				<center><b>PostComments:</b></center><br>
 				
-				<input type="text" placeholder="Join The Discussion...." size="80" style="border:2px solid #85C1E9"/>
+				<input type="text" placeholder="Join The Discussion...." size="80" style="border:2px solid #85C1E9" ng-model="blogCtrl.comment.commentDsp"/>
 				
-				<center><a href="" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-hand-up" ng-click="blogCtrl.createComment()"></span>PostBlog</a></center>
+				<center><a href class="btn btn-primary btn-success" ng-click="blogCtrl.createComment()"><span class="glyphicon glyphicon-hand-up"></span>AddComment</a></center>
 				
-				
+			
 				<div>
 				
 				</div>
@@ -226,23 +229,24 @@ input[type=text], select {
 				<b>Click to see Other links</b>
 			</h1>
 		</div>
-		<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
-				class="glyphicon glyphicon-hand-up" ></span>SeeMyBlog</a><br> <br></li>
-		<li><a href class="btn btn-success" ng-click="blogCtrl.getBlogList()">
-		<span class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
-		<li><a href="" class="btn btn-success"><span class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
+		<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success"
+						ng-click="blogCtrl.getBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role=='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getAdminBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li></div>
 	</div>
 
 </div>
    
-	<!-- -------------------------------------------------------------------------------------------------------------- -->				
+
 					
-					
 
 
-<!-- ---------------------------------------------------my Blogs---------------------------------------------------->
+<!-- ---------------------------------------------------my Blogs---------------------------------------------------------->
 
-<div ng-show="blogCtrl.myBlogList" class="row">
+<div ng-show="blogCtrl.myBlogList && {{RejectedBlogs.status=='Reject'}}" class="row">
 	<div class="col-md-9">
 		<div class="row" data-ng-repeat="blg in blogCtrl.myBlog">
 			<div class="col-md-12">
@@ -257,11 +261,11 @@ input[type=text], select {
 
 					</div>
 					<div class="panel-footer">
-
-						<span class="glyphicon glyphicon-comment" id="comment"></span> <a
-							href="" id="comments">Comments</a> 
-
-					</div>
+					
+                      
+						<span class="glyphicon glyphicon-comment" id="comment"></span> 
+							<a href id="comments" ng-click="blogCtrl.sendmyBlog(blg)">AddComments</a> 
+                       </div>
 				</div>
 			</div>
 		</div>
@@ -273,11 +277,134 @@ input[type=text], select {
 				<b>Click to see Other links</b>
 			</h1>
 		</div>
-		<li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
-				class="glyphicon glyphicon-hand-up" ></span>SeeMyBlog</a><br> <br></li>
-		<li><a href class="btn btn-success" ng-click="blogCtrl.getBlogList()">
-		<span class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
-		<li><a href="" class="btn btn-success"><span class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li>
+		<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success"
+						ng-click="blogCtrl.getBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role=='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getAdminBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li></div>
 	</div>
 
 </div>
+
+<!-- ---------------------------------------------Comments for my blog-------------------------------------------------------------------- -->
+
+
+<div ng-show="blogCtrl.sendMyblogobj" class="row">
+		
+	 <div class="col-md-9">
+		<div class="row" >
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong><a class="post-title" href=""><b>{{blogCtrl.selectedMyBlog.title}}</b></a></strong>
+					</div>
+					<div class="panel-body">
+
+						<p>{{blogCtrl.selectedMyBlog.description}}</p>
+
+
+					</div>
+					 
+                     <div class="panel-footer" data-ng-repeat="myblogcmmnt in blogCtrl.commentmyList">
+                      
+                      {{myblogcmmnt.commentDsp}}
+                      </div> 
+
+					
+				</div>
+				
+				<center><b>PostComments:</b></center><br>
+				
+				<input type="text" placeholder="Join The Discussion...." size="80" style="border:2px solid #85C1E9" ng-model="blogCtrl.mycomment.commentDsp"/>
+				
+				<center><a href class="btn btn-primary btn-success" ng-click="blogCtrl.createCommentForMyBlog()"><span class="glyphicon glyphicon-hand-up"></span>AddComment</a></center>
+				
+			
+				<div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<div class="click">
+			<h1>
+				<b>Click to see Other links</b>
+			</h1>
+		</div>
+		<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success"
+						ng-click="blogCtrl.getBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role=='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getAdminBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li></div>
+	</div>
+
+</div>
+
+
+
+<!-- -----------------------------------------------Manage Blogs by Admin------------------------------------------------------------------- ------------->
+
+<div ng-show="blogCtrl.manageBlogs" class="row">
+	<div class="col-md-9">
+		<div class="row" data-ng-repeat="blg in blogCtrl.bloglist">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					<div class="col-md-6">
+						<strong><a class="post-title" href=""><b>{{blg.title}}</b></a></strong>
+					</div>
+					<div class="col-md-2">
+					<b>By:{{blg.user.name}}</b>
+					</div>
+					<div class="col-md-2">
+					<a href class="btn btn-danger" ng-click="blogCtrl.rejectBlog(blg.blogId)"><span class="glyphicon glyphicon-trash"></span> Reject</a>
+					</div>
+					<div class="col-md-2">
+					<a href class="btn btn-success" ng-click="blogCtrl.acceptBlog(blg.blogId)"><span class="glyphicon glyphicon-trash"></span>Accept</a>
+					</div>
+					
+					<div class="panel-body">
+
+						<p>{{blg.description}}</p>
+
+
+					</div>
+					<!-- <div class="panel-footer">
+					
+                      
+						<span class="glyphicon glyphicon-comment" id="comment"></span> 
+							<a href id="comments" ng-click="blogCtrl.sendBlog(blg)">AddComments</a> 
+                       </div> -->
+             	</div>
+					</div>
+					
+					</div>
+					</div>
+					
+					</div>
+				
+		
+	<div class="col-md-3">
+		<div class="click">
+			<h1>
+				<b>Click to see Other links</b>
+			</h1>
+		</div>
+		<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getmyBlog()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role!='admin'"><li><a href class="btn btn-success"
+						ng-click="blogCtrl.getBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li></div>
+<div ng-show="currentUser.role=='admin'"><li><a href class="btn btn-success" ng-click="blogCtrl.getAdminBlogList()"><span
+							class="glyphicon glyphicon-hand-up"></span>ManageRequest</a></li></div>
+	</div>
+
+</div>
+
+					

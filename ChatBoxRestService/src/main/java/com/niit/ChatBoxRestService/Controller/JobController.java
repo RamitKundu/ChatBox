@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +57,15 @@ public class JobController {
 		return new ResponseEntity<JobApplication>(jobapp,HttpStatus.OK);
 		
 	}
+
+	@GetMapping("/getjobuserid/{userId}")
+	public ResponseEntity <List<Job>> getBlogByUserID(@PathVariable("userId")int userId){
+		List<Job> appliedJobs=jobDao.getAppliedJobs(userId);
+		
+		
+		return new ResponseEntity<List<Job>>(appliedJobs,HttpStatus.OK);	
+			
+		}
 	
 	
 

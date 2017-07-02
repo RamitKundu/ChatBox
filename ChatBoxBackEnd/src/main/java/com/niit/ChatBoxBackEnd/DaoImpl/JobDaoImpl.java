@@ -78,7 +78,7 @@ public class JobDaoImpl implements JobDao{
 	//@SuppressWarnings("unchecked")
 	public List<Job> getAppliedJobs(int userId) {
 		
-		return sessionFactory.getCurrentSession().createQuery("from JobApplication where userId=?").setParameter(0, userId).list();
+		return sessionFactory.getCurrentSession().createQuery("from JobApplication where user.userId='"+userId+"'").list();
 	}
 
 	public JobApplication getJobApplication(int userId, int jobId) {

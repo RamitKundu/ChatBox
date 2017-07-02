@@ -36,9 +36,9 @@ app.service('JobService',[
 			return deferred.promise;
 			}		
 		
-		this.addJobapply=function(jobapp){
+		this.addJobapply=function(data){
 			var deferred=$q.defer();
-			$http.post(RESTURL + '/addapplyjob',jobapp)
+			$http.post(RESTURL + '/addapplyjob',data)
 			.then(
 			function(response){
 				deferred.resolve(response.data);

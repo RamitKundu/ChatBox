@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ChatBoxBackEnd.Dao.CommentDao;
+import com.niit.ChatBoxBackEnd.Model.Blog;
 import com.niit.ChatBoxBackEnd.Model.Comments;
 
 
@@ -18,6 +19,9 @@ public class CommentDaoImpl implements CommentDao{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	Blog blog;
 
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Comments> getAllComments() {
@@ -35,6 +39,14 @@ public class CommentDaoImpl implements CommentDao{
 				return false;
 			}
 		
+	}
+	
+
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	public List<Comments> getByBlogId(int blogId) {
+		return (List<Comments>) sessionFactory.getCurrentSession().createQuery("from Comments where blog.blogId='"+blogId+"'").list();
+				
+
 	}
 
 }

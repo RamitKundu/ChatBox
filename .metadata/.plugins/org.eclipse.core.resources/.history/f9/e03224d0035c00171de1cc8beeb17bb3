@@ -1,0 +1,6 @@
+app.controller('BlogController',['$scope','$rootScope','BlogService',function($scope,$rootScope,BlogService){
+
+	
+	
+	
+}])

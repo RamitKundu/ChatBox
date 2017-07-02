@@ -44,7 +44,7 @@ public class BlogTestCase {
 	  @Test public void addBlogTestcase(){
 	  
 	  blog.setTitle("Posting blog 100"); blog.setDescription("Hobe na blog");blog.setDateTime(new Date());
-	  blog.setStatus('C'); blog.setReason("asdadsdfsdffef"); blog.setLikes(25);
+	  blog.setStatus("confirm"); blog.setReason("asdadsdfsdffef"); blog.setLikes(25);
 	  blog.setViews(2345); blog.setUser(userDao.getById(76));;
 	  
 	  boolean flag=blogDao.addBlog(blog); assertEquals("addBlogTestcase",true,flag);

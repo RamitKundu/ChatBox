@@ -31,7 +31,7 @@ public class BlogController {
 	
 	@PostMapping("/addblog")
 	public ResponseEntity<Blog> addBlog(@RequestBody Blog blog){
-		 blog.setStatus('N');
+		// blog.setStatus("New");
 		 blog.setDateTime(new Date());
 		 blogDao.addBlog(blog);
 		 blog.setErrorCode("200");
@@ -61,29 +61,52 @@ public class BlogController {
 			return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 		}
 	}
-	
-	@DeleteMapping("/deleteblog/{blogId}")
-	public ResponseEntity<Blog> deleteBlog(@PathVariable("blogId")int blogId){
-		 blog=blogDao.getById(blogId);
-		blogDao.deleteBlog(blog);
-		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
-	}
+//	
+//	@DeleteMapping("/deleteblog/{blogId}")
+//	public ResponseEntity<Blog> deleteBlog(@PathVariable("blogId")int blogId){
+//		 blog=blogDao.getById(blogId);
+//		blogDao.deleteBlog(blog);
+//		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
+//	}
 	
 	@GetMapping("/getbloguserid/{userId}")
 	public ResponseEntity <List<Blog>> getBlogByUserID(@PathVariable("userId")int userId){
 		List<Blog> blog=blogDao.getByUserId(userId);
-		//session.getAttribute("userId");
+		
 		
 		return new ResponseEntity<List<Blog>>(blog,HttpStatus.OK);	
 			
 		}
 		
 	
-	@PutMapping("/updateblog")
-	public ResponseEntity<Blog> updateBlog(@RequestBody Blog blog){
-		blogDao.updateBlog(blog);
+	@GetMapping("/acceptblog/{blogId}")
+	public ResponseEntity<Blog> acceptBlog(@PathVariable("blogId") int blogId){
+		Blog blog=blogDao.getById(blogId);
+		blog=updateStatus(blogId, "Accept");
 		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	}
 	
+	@GetMapping("/rejectblog/{blogId}")
+	public ResponseEntity<Blog> rejecttBlog(@PathVariable("blogId") int blogId){
+		Blog blog=blogDao.getById(blogId);
+		blog=updateStatus(blogId, "Reject");
+		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
+	}
+	
+	
+	private Blog updateStatus(int blogId,String status){
+		
+		blog=blogDao.getById(blogId);
+		blog.setStatus(status);
+		blogDao.updateBlog(blog);
+		
+		return blog;
+	}
+//	
+//	@DeleteMapping("/deleteblog")
+//	public ResponseEntity<Blog> deleteBlog(@RequestBody Blog blog){
+//		blogDao.deleteBlog(blog);
+//		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
+//	}
 
 }
