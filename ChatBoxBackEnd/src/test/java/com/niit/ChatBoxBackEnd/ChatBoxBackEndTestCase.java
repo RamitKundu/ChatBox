@@ -34,7 +34,7 @@ public class ChatBoxBackEndTestCase {
 	 @Test
 	 public void addUserTestCase(){
 	 //user.setUserId(1);
-	 user.setName("Anand");
+	 user.setFullName("Anand");
 	 user.setPassword("125");
 	 //user.setAddress("abcde");
 	 //user.setContact(12345);
@@ -53,7 +53,7 @@ public class ChatBoxBackEndTestCase {
 	 public void updateUserTestCase(){
 	
 	 user.setUserId(31);
-	 user.setName("Arnab Sarkar");
+	 user.setFullName("Arnab Sarkar");
 	 user.setPassword("123");
 //	 user.setAddress("abcd");
 //	 user.setContact(12345);
@@ -76,7 +76,7 @@ public class ChatBoxBackEndTestCase {
 	 public void deleteUserTestCase(){
 	
 	 user.setUserId(28);
-	 user.setName("Anand");
+	 user.setFullName("Anand");
 	 user.setPassword("125");
 //	 user.setAddress("abcde");
 //	 user.setContact(12345);

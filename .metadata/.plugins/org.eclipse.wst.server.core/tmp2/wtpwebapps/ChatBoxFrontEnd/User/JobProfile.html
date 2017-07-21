@@ -1,0 +1,53 @@
+<style>
+.require {
+	color: #666;
+}
+
+label small {
+	color: #999;
+	font-weight: normal;
+}
+</style>
+
+<div ng-include="'./User/login.html'"></div>
+<center>
+<div class="row">
+	<div class="col-md-9">
+		<h3>
+			<b>Fill in the below Credentials</b>
+		</h3>
+		<form ng-submit="userCtrl.createJobProfile()">
+		
+			<div class="form-group">
+				<label for="title">State <span class="require">*</span></label> <input
+					type="text" class="form-control" ng-model="userCtrl.users.state" />
+
+			</div>
+			<div class="form-group">
+				<label for="title">City <span class="require">*</span></label> <input
+					type="text" class="form-control" ng-model="userCtrl.users.city" />
+
+			</div>
+			<div class="form-group">
+				<label for="title">Qualification <span class="require">*</span></label> <input
+					type="text" class="form-control" ng-model="userCtrl.users.qualification" />
+
+			</div>
+			<div class="form-group">
+				<label for="title">Experience <span class="require">*</span></label> <input
+					type="text" class="form-control" ng-model="userCtrl.users.experience" />
+
+			</div>
+
+             <div class="form-group">
+    		        <button type="submit" class="btn btn-primary">
+    		            Submit
+    		        </button>
+    		       
+    		    </div>
+
+		</form>
+	</div>
+
+</div>
+</center>

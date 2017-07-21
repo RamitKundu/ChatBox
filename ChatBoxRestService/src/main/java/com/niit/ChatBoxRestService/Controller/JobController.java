@@ -16,6 +16,7 @@ import com.niit.ChatBoxBackEnd.Dao.JobDao;
 import com.niit.ChatBoxBackEnd.Model.Blog;
 import com.niit.ChatBoxBackEnd.Model.Job;
 import com.niit.ChatBoxBackEnd.Model.JobApplication;
+import com.niit.ChatBoxBackEnd.Model.User;
 
 @RestController
 public class JobController {
@@ -52,6 +53,7 @@ public class JobController {
 	@PostMapping("/addapplyjob")
 	public ResponseEntity<JobApplication> addJob(@RequestBody JobApplication jobapp){
 		jobapp.setDateApplied(new Date());;
+		//jobapp.setStatus('A');
 		jobDao.addJob(jobapp);
 		
 		return new ResponseEntity<JobApplication>(jobapp,HttpStatus.OK);
@@ -66,6 +68,27 @@ public class JobController {
 		return new ResponseEntity<List<Job>>(appliedJobs,HttpStatus.OK);	
 			
 		}
+	
+	@GetMapping("/getappliedjobstoadmin")
+	public ResponseEntity<List<JobApplication>> getAppliedJobsToAdmin(){
+		List<JobApplication> getJobs=jobDao.showJobsAdmin();
+		return new ResponseEntity<List<JobApplication>>(getJobs,HttpStatus.OK);
+	}
+	
+
+	@GetMapping("/getuserbyjobId/{jobId}")
+	public ResponseEntity<List<JobApplication>> getUserByJobId(@PathVariable("jobId") int jobId){
+		List<JobApplication> getUserbyJobID=jobDao.getUserByJobId(jobId);
+		return new ResponseEntity<List<JobApplication>>(getUserbyJobID,HttpStatus.OK);
+	}
+	
+	@PostMapping("/updateprofileAdmin")
+	public ResponseEntity<JobApplication> updateUser(@RequestBody JobApplication jobapp) {
+		
+		jobDao.updateJob(jobapp);
+		return new ResponseEntity<JobApplication>(jobapp, HttpStatus.OK);
+
+	}
 	
 	
 

@@ -86,9 +86,24 @@ public class JobDaoImpl implements JobDao{
 		return (JobApplication) sessionFactory.getCurrentSession().createQuery("from JobApplication where userId=? and jobId=?").setParameter(0, userId).setParameter(1, jobId);
 	}
 
-	public JobApplication getJobApplication(int jobAppId) {
+	public JobApplication getJobApplicationById(int jobAppId) {
 	
 		return sessionFactory.getCurrentSession().get(JobApplication.class, jobAppId);
 	}
 
+	public List<JobApplication> showJobsAdmin() {
+		
+		return sessionFactory.getCurrentSession().createQuery("from JobApplication where status='A'").list();
+	}
+
+	
+	
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	public List<JobApplication> getUserByJobId(int jobId) {
+		
+		return sessionFactory.getCurrentSession().createQuery("from JobApplication where job.jobId='"+jobId+"'").list();
+	}
+
+	
+	
 }

@@ -1,0 +1,50 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+
+
+<div class="container">
+
+	<form class="form-horizontal">
+
+		<fieldset>
+
+			<!-- Form Name -->
+			<center>
+				<legend>Edit Profile</legend>
+			</center>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="textinput">Email</label>
+				<div class="col-md-4">
+					<input id="textinput" type="email" placeholder=" Edit your email"
+						class="form-control input-md"
+						ng-model="userCtrl.currentUser.email">
+
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="textinput">Password</label>
+				<div class="col-md-4">
+					<input id="textinput" type="password"
+						placeholder="Edit your password" class="form-control input-md"
+						ng-model="userCtrl.currentUser.password">
+
+				</div>
+			</div>
+			<!-- Button -->
+			<div class="col-md-6 col-md-offset-5">
+				<div class="form-group">
+
+					<a href class="btn btn-primary" ng-click="userCtrl.update()">Submit</a>
+
+				</div>
+			</div>
+		</fieldset>
+
+	</form>
+
+</div>

@@ -1,0 +1,100 @@
+console.log("hello m at app.js");
+var app = angular.module('myApp', [ 'ngRoute','ngCookies' ]);
+app.constant('RESTURL', 'http://localhost:8005/ChatBoxRestService');
+
+app.config(function($routeProvider, $locationProvider) {
+	console.log("hello m at app.js")
+	$routeProvider.when('/', {
+		templateUrl : 'User/Home.html',
+		controller : 'UserController',
+		controllerAs : 'userCtrl'
+	})
+
+//	.when('/afterregister', {
+//		templateUrl : 'User/AfterLogin.html',
+//
+//	})
+
+	.when('/afterlogin', {
+
+		templateUrl : 'User/AfterLogin.html',
+
+	})
+
+	.when('/blog', {
+		templateUrl : 'Blog/Blog.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
+	
+//	.when('/blog', {
+//		templateUrl : './BlogRepeat/MasterBlog.html',
+//	    controller : 'BlogController',
+//		controllerAs : 'blogCtrl'
+//	})
+	.when('/edituser', {
+
+		templateUrl : 'User/UpdateProfile.html',
+		controller : 'UserController',
+    	controllerAs : 'userCtrl'
+
+	})
+	.when('/goto', {
+		templateUrl : 'User/AfterLogin.html',
+		
+
+	})
+	
+	
+	.when('/jobs', {
+		templateUrl : 'Job/PostJobs.html',
+		controller : 'JobController',
+		controllerAs : 'jobCtrl'
+
+	})
+	.when('/gobacktojobs', {
+
+		templateUrl : 'Job/PostJobs.html',
+		controller : 'JobController',
+    	controllerAs : 'jobCtrl'
+
+	})
+
+	.when('/gotoalljobs', {
+
+		templateUrl : 'Job/AllJobs.html',
+		controller : 'JobController',
+    	controllerAs : 'jobCtrl'
+
+	})
+	
+	.when('/jobqual', {
+		templateUrl : 'Job/Qualification.html',
+		controller : 'JobController',
+    	controllerAs : 'jobCtrl'
+
+	})
+
+	
+	.when('/gotojob', {
+
+		templateUrl : 'Job/AllJobs.html',
+		controller : 'JobController',
+    	controllerAs : 'jobCtrl'
+
+	});
+	
+	
+
+
+//	app.run(function($rootScope,$location,$cookieStore,$http){
+//		
+//		$rootScope.currentUser = $cookieStore.get('currentUser') || {};
+//		console.log($rootScope.currentUser)
+//		if ($rootScope.currentUser) {
+//            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.currentUser;
+//        }
+//	
+//		
+//	});
+});

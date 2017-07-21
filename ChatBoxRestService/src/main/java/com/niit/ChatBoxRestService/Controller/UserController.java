@@ -34,46 +34,13 @@ public class UserController {
 
 		userDao.add(newuser);
 		newuser.setErrorCode("200");
-		newuser.setErrorMessage("Thanks for registration " +newuser.getName());
+		newuser.setErrorMessage("Thanks for registration " +newuser.getFullName());
 		//session.setAttribute("userId", user.getUserId());
 
 		return new ResponseEntity<User>(newuser, HttpStatus.OK);
 	}
 
-//	//@SuppressWarnings("null")
-//	@GetMapping("/login/{}")
-//	public ResponseEntity<User> validateUser(@RequestBody User user,@PathVariable("email") String email, @PathVariable("password") String password) {
-//       user=userDao.validate(email,password);
-//       
-//		if(userDao.validate(email, password)!=null){
-//			user=userDao.getByEmail(email);
-//			user.setErrorCode("200");
-//			user.setErrorMessage("User  found with email");
-//			return new ResponseEntity<User>(user,HttpStatus.OK);
-//		}else{
-//			User nwuser=new User();
-//			nwuser.setErrorCode("404 ");
-//			nwuser.setErrorMessage("User not found with email");
-//			return new ResponseEntity<User>(nwuser,HttpStatus.NOT_FOUND);
-//		}
-//		
-//	}
-//		user = userDao.getByEmail(email);
-//		if (user != null) {
-//			if (password.equals(user.getPassword())) {
-//				user.setErrorCode("200");
-//				user.setErrorMessage("You have logged in successfully");
-//			}
-//
-//		} else {
-//			user = new User();
-//			user.setErrorCode("404");
-//			user.setErrorMessage("Invalid Credentials..");
-//		}
-//		return user;
-//	}
-//*/
-	@PutMapping("/updateuser")
+	@PostMapping("/updateuser")
 	public ResponseEntity<User> updateUser(@RequestBody User user) {
 		// user=userDao.getById(userId);
 		userDao.update(user);
@@ -127,7 +94,7 @@ public class UserController {
 		if (user != null && ((u.getPassword()).equals(user.getPassword()))) {
 			
 				user.setErrorCode("200");
-				user.setErrorMessage("You have logged in successfully " +user.getName());
+				user.setErrorMessage("You have logged in successfully " +user.getFullName());
 				return new ResponseEntity<User>(user,HttpStatus.OK);
 			
 		} else {

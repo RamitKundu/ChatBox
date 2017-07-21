@@ -51,7 +51,7 @@ public class JobTestCase {
 	  @Test public void addJobTestcase(){
 	  
 	 jobapp.setDateApplied(new Date());
-	 jobapp.setQualification("B.Tech");
+	 //jobapp.setQualification("B.Tech");
 	 jobapp.setRemarks("OverQualified");
 	 jobapp.setStatus('A');
 	 

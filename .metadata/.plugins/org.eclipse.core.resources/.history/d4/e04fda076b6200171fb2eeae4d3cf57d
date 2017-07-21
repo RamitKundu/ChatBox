@@ -1,0 +1,55 @@
+console.log("loaded user controller");
+app.controller('UserController', [
+		'UserService',
+		'$http',
+		'$scope',
+		'$location',
+		'$rootScope',
+		'$cookieStore',
+		function(UserService, $http, $scope, $location,$rootScope,$cookieStore){
+			var self = this;
+			self.user = {};
+			self.guest={};
+			
+			self.createUser=function(){
+				console.log('adduser called');
+				UserService.addUser(self.user).then(
+				function(){
+				alert("Your Registration is complete....Please Login to Continue!!")
+					//self.user=data;
+					//$rootScope.currentRegUser=self.user;
+					//console.log($rootScope.currentRegUser);
+					$location.path('/');
+				},function() {
+					console.log();		
+				});
+			}
+
+			self.validateUser = function() {
+				console.log('validate user called');
+				//console.log('self.guset');
+				console.log(self.guest);
+				UserService.validate(self.guest).then(
+						function(data) {
+							//console.log(response);
+							
+							self.responsedata=data;
+							
+							console.log(self.responsedata);
+							//$rootScope.currentUserName=data.name;
+							
+							$rootScope.currentUser=self.responsedata;
+							$scope.currentUser=self.responsedata;
+							$cookieStore.put('currentUser',$rootScope.currentUser);
+							
+							console.log($rootScope.currentUser);
+							//self.guest=data;
+							$location.path('/afterlogin');
+							
+						}, function(error) {
+							alert("Invalid Credentials......Please Login Again.");
+							console.log(error);
+						});
+			        }  
+
+		} ])

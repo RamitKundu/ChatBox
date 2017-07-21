@@ -1,0 +1,16 @@
+app.controller('BlogController', [ 'ForumService', '$http', '$scope',
+		'$location','$rootScope', function(ForumService, $http, $scope, $location,$rootScope){
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+])

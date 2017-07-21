@@ -1,0 +1,81 @@
+app.controller('ForumController', [ 'ForumService', '$http', '$scope','$routeParams',
+		'$location','$rootScope', function(ForumService, $http, $scope, $location,$rootScope,$routeParams){
+	var self = this;
+	
+	// For All Forums
+
+	self.getForumList = function() {
+
+		console.log("ForumList controller called");
+		ForumService.listForum().then(function(response) {
+			self.forumlist = response.data;
+			console.log(self.forumlist);
+            //For ForumCmmnt(explicitly called)
+			self.getParams();
+		}, function(error) {
+			console.log(error);
+		});
+	}
+	self.getForumList();
+
+	//For Create Forum by admin
+	
+	self.createForum = function() {
+
+		console.log("Forum controller called");
+
+		ForumService.addForum(self.forum).then(function() {
+			// self.job = response.data;
+			// $cookieStore.put('currentUser',self.responsedata);
+			alert("Forum Posted successfully..:)");
+			$location.path("/allforums");
+
+		}, function(error) {
+			console.log(error);
+		});
+	}
+	
+	self.getParams = function(){
+		if($routeParams.forumId){
+			
+			self.selectedForumId=$routeParams.forumId;
+			console.log(self.selectedForumId);
+		
+			
+		}
+	
+		
+	}
+	
+	
+	self.createComment = function() {
+
+		console.log("Forum Comment controller called");
+
+		ForumService.addForumCmmnt(self.comment).then(function() {
+			// self.job = response.data;
+			// $cookieStore.put('currentUser',self.responsedata);
+			alert("Comment Posted successfully..:)");
+			//$location.path("/allforums");
+
+		}, function(error) {
+			console.log(error);
+		});
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+])

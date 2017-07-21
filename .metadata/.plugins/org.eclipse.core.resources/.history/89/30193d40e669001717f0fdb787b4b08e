@@ -1,0 +1,16 @@
+app.controller('BlogController', [ 'BlogService', '$http', '$scope',
+		'$location','$rootScope', function(BlogService, $http, $scope, $location,$rootScope){
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+])

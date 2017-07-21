@@ -1,0 +1,23 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+<center>
+<div class="row">
+<div class="col-md-12">
+<form>
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control" ng-model="forumCtrl.forum.title">
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+    <label >Description</label>
+    <textarea type="text" class="form-control" ng-model="forumCtrl.forum.description" ></textarea>
+  </div>
+  
+  <a href class="btn btn-success" ng-click="forumCtrl.createForum()">Post</a>
+</form>
+
+</div>
+</div>
+</center>

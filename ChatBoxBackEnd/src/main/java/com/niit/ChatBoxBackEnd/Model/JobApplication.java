@@ -22,7 +22,7 @@ public class JobApplication {
 	private int jobAppId;
 	//private int userId;
 	//private int jobId;
-	private String qualification;
+	//private String qualification;
 	
 	private Date dateApplied;
 	private String remarks;
@@ -86,12 +86,12 @@ public class JobApplication {
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	public String getQualification() {
-		return qualification;
-	}
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
-	}
+//	public String getQualification() {
+//		return qualification;
+//	}
+//	public void setQualification(String qualification) {
+//		this.qualification = qualification;
+//	}
 	
 	
 	

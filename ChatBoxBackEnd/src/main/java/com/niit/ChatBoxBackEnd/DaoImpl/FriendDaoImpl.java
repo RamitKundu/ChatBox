@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ChatBoxBackEnd.Dao.FriendDao;
 import com.niit.ChatBoxBackEnd.Model.Friend;
-import com.niit.ChatBoxBackEnd.Model.User;
+
 
 @Repository
 @Transactional
@@ -60,7 +60,7 @@ public class FriendDaoImpl implements FriendDao {
 	@SuppressWarnings("unchecked")
 	public List<Friend> getmySentRequest(int userId) {
 		
-		return sessionFactory.getCurrentSession().createQuery("from Friend where friend.userId='"+userId+"' and status='New' and initiator='0'").list();
+		return sessionFactory.getCurrentSession().createQuery("from Friend where user.userId='"+userId+"' and status='New' and initiator='1'").list();
 	}
 	
 	@SuppressWarnings("unchecked")
