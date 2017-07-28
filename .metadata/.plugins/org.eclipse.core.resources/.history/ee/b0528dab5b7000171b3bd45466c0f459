@@ -1,0 +1,34 @@
+app.service('ExtraJobService',[
+	'$http',
+	'$rootScope',
+	'$q',
+	'RESTURL',
+	function($http, $rootScope, $q, RESTURL) {
+	
+		this.listmyJob = function(userId){
+		console.log("Extra Jobservice called");
+		
+		var deferred=$q.defer();
+		$http.get(RESTURL + '/getmyappliedjobs/'+userId)
+		.then(
+		function(response){
+			
+			deferred.resolve(response);
+			},
+			function(error){
+				deferred.reject(error);
+			});
+		return deferred.promise;
+		}	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}])

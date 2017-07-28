@@ -1,0 +1,30 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+<table>
+  <tr><td> <input type="text" class="form-control" ng-model="test">
+   
+        <button class="btn btn-default" type="button" ng-click="frndCtrl.searchAllFriends()">Search</button></td></tr>
+  </table>
+
+<br>
+<br>
+<br>
+<div class="container-fluid well span6" ng-repeat="frnd in frndCtrl.friendlist | filter:test">
+	<div class="row-fluid">
+     <div class="col-md-3">
+		    <img src="" class="img-circle">
+        </div>
+        
+       <div class="col-md-4" >
+            <h5><b>Name:&nbsp&nbsp{{frnd.fullName}}</b></h5>
+            
+            <h5><b>Email:&nbsp&nbsp{{frnd.email}}</b></h5>
+            <h5><b>State:&nbsp&nbsp{{frnd.userProfile.state}}</b></h5>
+             <h5><b>City:&nbsp&nbsp{{frnd.userProfile.city}}</b></h5>
+            </div>
+        
+        <div class="col-md-5"><a href class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>SendRequest</a></div>
+        
+</div>
+</div>

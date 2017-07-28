@@ -1,0 +1,46 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+
+<div class="row" ng-init="frndCtrl.seeAllFrndRqst()" >
+	<div class="col-md-9" ng-repeat="frnd in frndCtrl.friendlist">
+		<div class="row">
+			<div class="col-md-3" >
+				<img src="" class="img-circle">
+			</div>
+			<div class="col-md-3">
+				<h5>
+					<b>Name:&nbsp&nbsp{{frnd.friend.fullName}}</b>
+				</h5>
+
+				<h5>
+					<b>Email:&nbsp&nbsp{{frnd.friend.email}}</b>
+				</h5>
+				<h5>
+					<b>State:&nbsp&nbsp{{frnd.friend.userProfile.state}}</b>
+				</h5>
+				<h5>
+					<b>City:&nbsp&nbsp{{frnd.friend.userProfile.city}}</b>
+				</h5>
+			</div>
+			<div class="col-md-2">
+				<a href class="btn btn-success" ng-click="frndCtrl.acceptFrnd(frnd)"><span
+			class="glyphicon glyphicon-user" value="Confirm" ></span>Accept</a>
+			</div>
+			<div class="col-md-2">
+				<a href class="btn btn-danger" ng-click="frndCtrl.rejectFrnd(frnd)"><span
+			class="glyphicon glyphicon-warning-sign" value="Reject" ng-model="frndCtrl.rjctFrnd.status"></span>Reject</a>
+			</div>
+
+			
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div><li><a href class="btn btn-primary" ng-click="frndCtrl.seeAllSendRqst()"><span
+			class="glyphicon glyphicon-edit"></span>SeeAllSentRequest</a></li></div>
+			<br>
+			<br>
+			<div><li><a href class="btn btn-primary" ng-click="frndCtrl.seeAllFrndRqst()"><span
+			class="glyphicon glyphicon-edit"></span>SeeAllFriendRequest</a></li></div>
+	</div>
+</div>

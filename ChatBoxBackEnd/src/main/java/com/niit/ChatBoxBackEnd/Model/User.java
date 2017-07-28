@@ -33,8 +33,8 @@ public class User extends BaseDomain{
 	private String role;
 	@Column(unique=true)
 	private String email;
-	private char isOnline;
-	private char status;
+	private int isOnline;
+	private String status;
 	
 	@JsonManagedReference(value="user_userprofile movement")
 	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST,mappedBy="user")
@@ -95,16 +95,16 @@ public class User extends BaseDomain{
 //	public void setAddress(String address) {
 //		this.address = address;
 //	}
-	public char getIsOnline() {
+	public int getIsOnline() {
 		return isOnline;
 	}
-	public void setIsOnline(char isOnline) {
+	public void setIsOnline(int isOnline) {
 		this.isOnline = isOnline;
 	}
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public String getFullName() {

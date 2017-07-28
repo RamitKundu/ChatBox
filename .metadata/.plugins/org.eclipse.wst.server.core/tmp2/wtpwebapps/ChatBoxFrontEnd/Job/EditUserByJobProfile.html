@@ -19,7 +19,7 @@
 		</tr>
 	</thead>
 
-	<tbody>
+	<tbody ng-init="jobCtrl.editByAdmin(selectedJob)">
 		<tr>
 			<td>{{jobCtrl.selectedJob.job.title}}</td>
 			<td>{{jobCtrl.selectedJob.job.company}}</td>

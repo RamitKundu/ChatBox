@@ -16,7 +16,7 @@ app.controller('UserController', [
 				//}
 			self.createUser=function(){
 				console.log('adduser called');
-				
+				self.user.status="New";
 				UserService.addUser(self.user).then(
 						
 				function(data){
@@ -30,6 +30,7 @@ app.controller('UserController', [
 			self.validateUser = function() {
 				console.log('validate user called');
 				//console.log('self.guset');
+				self.guset.isOnline=1;
 				console.log(self.guest);
 				UserService.validate(self.guest).then(
 						function(data) {

@@ -1,0 +1,39 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+
+
+<table>
+	<thead>
+		<tr>
+			<th>JobTitle</th>
+			<th>Company</th>
+			<th>JobDesp</th>
+			<th>Name</th>
+			<th>City</th>
+			<th>Qual.</th>
+			<th>JobExp.</th>
+			<th>Status</th>
+			<th>Remarks</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+
+	<tbody ng-init="jobCtrl.editByAdmin(selectedJob)">
+		<tr>
+			<td>{{selectedJob.job.title}}</td>
+			<td>{{jobCtrl.selectedJob.job.company}}</td>
+			<td>{{jobCtrl.selectedJob.job.description}}</td>
+			<td>{{jobCtrl.selectedJob.user.fullName}}</td>
+			<td>{{jobCtrl.selectedJob.user.userProfile.state}}</td>
+			<td>{{jobCtrl.selectedJob.user.userProfile.qualification}}</td>
+			<td>{{jobCtrl.selectedJob.user.userProfile.experience}}</td>
+
+		</tr>
+	</tbody>
+
+
+
+
+
+</table>

@@ -1,0 +1,32 @@
+app.controller('ExtraJobController', [
+		'ExtraJobService',
+		'$http',
+		'$scope',
+		'$location',
+		'$rootScope',
+		'$cookieStore',
+		'$routeParams',
+		function(ExtraJobService, $http, $scope, $location, $rootScope,$cookieStore,$routeParams) {
+
+			self.getMyJobList = function() {
+
+				console.log(" My Applied JobList controller called");
+				JobService.listmyJob().then(function(response) {
+				
+					
+					self.joblist = response.data;
+					console.log(self.joblist);
+					
+					                     
+				}, function(error) {
+					console.log(error);
+				});
+			}
+			
+			
+			self.getMyJobList();
+			
+			
+			
+			
+		}])

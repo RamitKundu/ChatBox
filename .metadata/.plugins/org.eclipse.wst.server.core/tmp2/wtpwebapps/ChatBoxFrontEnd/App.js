@@ -1,6 +1,6 @@
 console.log("hello m at app.js");
 var app = angular.module('myApp', [ 'ngRoute','ngCookies' ]);
-app.constant('RESTURL', 'http://localhost:8087/ChatBoxRestService');
+app.constant('RESTURL', 'http://localhost:8082/ChatBoxRestService');
 
 app.config(function($routeProvider, $locationProvider) {
 	console.log("hello m at app.js")
@@ -73,28 +73,21 @@ app.config(function($routeProvider, $locationProvider) {
 
 	})
 	
-	.when('/myjobs', {
+	.when('/myappliedjobs', {
 
 		templateUrl : 'Job/AppliedJobs.html',
 		controller : 'JobController',
     	controllerAs : 'jobCtrl'
 
 	})
-	.when('/edituserprofile', {
-
-		templateUrl : 'Job/EditUserByJobProfile.html',
-		controller : 'JobController',
-    	controllerAs : 'jobCtrl'
-
-	})
-//	
-//	.when('/gotoadminpage', {
+//	.when('/edituserprofile', {
 //
-//		templateUrl : 'Job/AppliedJobsAdmin.html',
+//		templateUrl : 'Job/EditUserByJobProfile.html',
 //		controller : 'JobController',
 //    	controllerAs : 'jobCtrl'
 //
 //	})
+
 	.when('/info/:jobId', {
 		templateUrl : 'Job/UserByJob.html',
 		controller : 'JobController',
@@ -102,6 +95,13 @@ app.config(function($routeProvider, $locationProvider) {
 
 	})
 	
+	.when('/allupdatebyadmin', {
+
+		templateUrl : 'Job/AllJobs.html',
+		controller : 'JobController',
+    	controllerAs : 'jobCtrl'
+
+	})
 	
 	.when('/forums', {
 		templateUrl : 'Forum/AllForums.html',
@@ -131,7 +131,39 @@ app.config(function($routeProvider, $locationProvider) {
 		controller : 'ForumController',
     	controllerAs : 'forumCtrl'
 
+	})
+
+	.when('/frnds', {
+
+		templateUrl : 'Friend/AllFriend.html',
+		controller : 'FriendController',
+    	controllerAs : 'frndCtrl'
+
+	})
+	
+	.when('/seeallsendrqst', {
+
+		templateUrl : 'Friend/MySentRqst.html',
+		controller : 'FriendController',
+    	controllerAs : 'frndCtrl'
+
+	})
+	
+	.when('/seeallfrndrqst', {
+
+		templateUrl : 'Friend/MyFrndRqst.html',
+		controller : 'FriendController',
+    	controllerAs : 'frndCtrl'
+
+	})
+	.when('/seemyfriends', {
+
+		templateUrl : 'Friend/MyFriends.html',
+		controller : 'FriendController',
+    	controllerAs : 'frndCtrl'
+
 	});
+
 
 
 	

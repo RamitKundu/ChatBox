@@ -26,7 +26,7 @@ public class JobApplication {
 	
 	private Date dateApplied;
 	private String remarks;
-	private char status;
+	private String status;
 	
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private User user;
@@ -80,10 +80,10 @@ public class JobApplication {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 //	public String getQualification() {

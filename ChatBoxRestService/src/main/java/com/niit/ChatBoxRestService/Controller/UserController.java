@@ -91,6 +91,9 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<User> validateUser(@RequestBody User u) {
    		user = userDao.getByEmail(u.getEmail());
+   		user.setIsOnline(0);
+   		userDao.update(u);
+   		
 		if (user != null && ((u.getPassword()).equals(user.getPassword()))) {
 			
 				user.setErrorCode("200");

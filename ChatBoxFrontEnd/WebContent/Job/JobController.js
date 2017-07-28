@@ -12,6 +12,8 @@ app.controller('JobController', [
 			self.job = {};
 			self.jobapp = {};
 			self.joblist = [];
+			self.myappliedjob=false;
+			self.updatebyadmin=true;
 			// self.qual={};
 			// For posting jobs
 
@@ -40,13 +42,14 @@ app.controller('JobController', [
 
 				console.log("JobList controller called");
 				JobService.listJob().then(function(response) {
-					self.uId = $cookieStore.get('currentUser').userId;
+					//self.uId = $cookieStore.get('currentUser').userId;
+					
 					self.joblist = response.data;
+					console.log(self.joblist);
+					//console.log(self.uId);
 					//Func. explicitly called..
 					self.getParamInfo();
-					console.log(self.joblist);
-					console.log(self.uId);
-                     
+					                     
 				}, function(error) {
 					console.log(error);
 				});
@@ -91,18 +94,19 @@ app.controller('JobController', [
 
 			// self.getMyJobList();
 
-			self.getAppliedJobListAdmin = function() {
-				console.log("Applied Jobs for Admin called");
-				JobService.listAppliedJobsAdmin().then(function(response) {
-					self.joblist = response.data;
-					console.log(self.joblist);
-					$location.path("/appliedjobsadmin");
-
-				}, function(error) {
-					console.log(error);
-				});
-
-			}
+//			self.getAppliedJobListAdmin = function() {
+//				console.log("Applied Jobs for Admin called");
+//				JobService.listAppliedJobsAdmin().then(function(response) {
+//					self.joblist = response.data;
+//					console.log(self.joblist);
+//					$location.path("/appliedjobsadmin");
+//
+//				}, function(error) {
+//					console.log(error);
+//				});
+//
+//			}
+			
 			
 			self.getParamInfo = function(){
 				if($routeParams.jobId){
@@ -111,23 +115,59 @@ app.controller('JobController', [
 					JobService.getUserByJob(self.selectedJobId).then(function(response) {
 						self.joblist = response.data;
 						console.log(self.joblist);
+//						$location.path("/myappliedjobs");
 					}, function(error) {
 						console.log(error);
 					});	
+				}	
 				}
 			
+			self.getAllJobApplication=function(){
+				console.log("My Applied Job Called");
+				JobService.getAllJobApplication()
+				.then(function(response){
+					self.JobApplicationList=response.data;
+					console.log(self.JobApplicationList);
+					self.jcu=$cookieStore.get('currentUser').userId;
+					console.log(self.jcu);
+				},function(error){
+					alert(error);
+				});
 			}
+			
+			
+			
 			
 			self.editByAdmin = function(j){
 				self.selectedJob=j;
 				console.log(self.selectedJob);
 				console.log("JobProfile Edit by Admin");
-				$location.path("/edituserprofile");
+				self.myappliedjob=true;
+				self.updatebyadmin=false;
+				//$location.path("/edituserprofile");
 				}
 			
 			
 				
-				
+				self.updateByAdmin=function(){
+					
+					console.log("UserProfile Update By Admin controller called");
+	                
+					JobService.updateJobByAdmin(self.selectedJob)
+					.then(function() {
+						// self.job = response.data;
+						// $cookieStore.put('currentUser',self.responsedata);
+						alert("Update successfull..:)");
+						$location.path("/allupdatebyadmin");
+
+					}, function(error) {
+						console.log(error);
+					});
+					
+					
+					
+					
+				}
 				
 				
 			

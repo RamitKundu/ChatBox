@@ -1,0 +1,11 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+<input type="text">
+<br>
+<a href class="btn btn-success" ng-click="frndCtrl.searchAllFriends()"><span
+	class="glyphicon glyphicon-hand-up"></span>Search</a>
+	
+	<div class="row" ng-repeat="frnd in frndCtrl.friendlist | filter:{fullName}">
+	{{frnd.fullName}}
+	</div>

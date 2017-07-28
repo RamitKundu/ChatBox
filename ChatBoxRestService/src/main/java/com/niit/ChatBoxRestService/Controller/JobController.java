@@ -56,6 +56,7 @@ public class JobController {
 		//jobapp.setStatus('A');
 		jobDao.addJob(jobapp);
 		
+		
 		return new ResponseEntity<JobApplication>(jobapp,HttpStatus.OK);
 		
 	}
@@ -81,12 +82,20 @@ public class JobController {
 		List<JobApplication> getUserbyJobID=jobDao.getUserByJobId(jobId);
 		return new ResponseEntity<List<JobApplication>>(getUserbyJobID,HttpStatus.OK);
 	}
-	
-	@PostMapping("/updateprofileAdmin")
+	//Update of JobApplication by admin
+	@PostMapping("/updateuserprofileAdmin")
 	public ResponseEntity<JobApplication> updateUser(@RequestBody JobApplication jobapp) {
 		
 		jobDao.updateJob(jobapp);
 		return new ResponseEntity<JobApplication>(jobapp, HttpStatus.OK);
+
+	}
+	
+	@GetMapping("/getmyappliedjobs")
+	public ResponseEntity<List<JobApplication>> getMyJob() {
+		
+		List<JobApplication> getmyJobs=jobDao.getMyAppliedJob();
+		return new ResponseEntity<List<JobApplication>>(getmyJobs, HttpStatus.OK);
 
 	}
 	

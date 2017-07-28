@@ -1,0 +1,16 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+
+<!--  By giving a value to  ng-model we can use it as a expression in filter whatever we write in input is going to bind with filter exp.-->
+<table class="table">
+<tbody>
+<tr><center>Search Friends:&nbsp&nbsp<input type="text" placeholder="Search here...."></center></tr>
+
+
+
+
+
+</tbody>
+
+</table>

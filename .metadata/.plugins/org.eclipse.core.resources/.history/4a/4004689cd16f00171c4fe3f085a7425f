@@ -1,0 +1,11 @@
+
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+<div class="col-md-9">
+	<div class="row" data-ng-repeat="myjob in jobCtrl.JobApplicationList|filter:{user:{userId:jobCtrl.jcu}}">
+<b>{{myjob.job.title}}</b>
+	</div>
+</div>
+
+

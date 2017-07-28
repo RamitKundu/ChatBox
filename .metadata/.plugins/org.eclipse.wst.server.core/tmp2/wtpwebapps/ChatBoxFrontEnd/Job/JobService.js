@@ -49,22 +49,7 @@ app.service('JobService',[
 			}		
 		
 		
-//		this.listmyJob = function(userId){
-//			console.log("Jobservice called");
-//			
-//			var deferred=$q.defer();
-//			$http.get(RESTURL + '/getjobuserid/' +userId)
-//			.then(
-//			function(response){
-//				
-//				deferred.resolve(response);
-//				},
-//				function(error){
-//					deferred.reject(error);
-//				});
-//			return deferred.promise;
-//			}	
-		
+
 
 		this.getUserByJob=function(selectedJobId){
 			console.log("Jobservice By User called");
@@ -82,27 +67,63 @@ app.service('JobService',[
 			return deferred.promise;
 			}	
 		
-		this.editProfile=function(j){
+
+		this.getAllJobApplication=function(){
+			console.log("My Applied Job  By User called");
+			
 			var deferred=$q.defer();
-			$http.post(RESTURL + '/updateprofileAdmin',j)
+			$http.get(RESTURL + '/getmyappliedjobs')
 			.then(
 			function(response){
-				deferred.resolve(response.data);
+				
+				deferred.resolve(response);
 				},
 				function(error){
 					deferred.reject(error);
 				});
 			return deferred.promise;
-			}		
+			}	
+		
+		
+//		this.editProfile=function(j){
+//			var deferred=$q.defer();
+//			$http.post(RESTURL + '/updateprofileAdmin',j)
+//			.then(
+//			function(response){
+//				deferred.resolve(response.data);
+//				},
+//				function(error){
+//					deferred.reject(error);
+//				});
+//			return deferred.promise;
+//			}		
 		
 		
 		
 		
-		this.listAppliedJobsAdmin=function(){
-			console.log("Jobservice for Admin called");
+//		this.listAppliedJobsAdmin=function(){
+//			console.log("Jobservice for Admin called");
+//			
+//			var deferred=$q.defer();
+//			$http.get(RESTURL + '/getappliedjobstoadmin')
+//			.then(
+//			function(response){
+//				
+//				deferred.resolve(response);
+//				},
+//				function(error){
+//					deferred.reject(error);
+//				});
+//			return deferred.promise;
+//			}		
+
+		
+
+		this.getAllJobApplication=function(){
+			console.log("JobApplicationService for applied jobs  called");
 			
 			var deferred=$q.defer();
-			$http.get(RESTURL + '/getappliedjobstoadmin')
+			$http.get(RESTURL + '/getmyappliedjobs')
 			.then(
 			function(response){
 				
@@ -114,10 +135,19 @@ app.service('JobService',[
 			return deferred.promise;
 			}		
 		
-		
-		
-		
-		
+		this.updateJobByAdmin = function(selectedJob){
+			console.log("Update By Admin Job Service")
+			var deferred=$q.defer();
+			$http.post(RESTURL + '/updateuserprofileAdmin',selectedJob)
+			.then(
+			function(){
+				deferred.resolve();
+				},
+				function(error){
+					deferred.reject(error);
+				});
+			return deferred.promise;
+			}		
 		
 		
 		

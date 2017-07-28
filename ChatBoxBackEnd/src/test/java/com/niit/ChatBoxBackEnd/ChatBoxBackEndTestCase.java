@@ -41,7 +41,7 @@ public class ChatBoxBackEndTestCase {
 	 user.setEmail("abcd");
 	 user.setIsOnline('A');
 	 user.setRole("user");
-	 user.setStatus('R');
+	 user.setStatus("New");
 	// user.setErrorCode("200");
 	// user.setErrorMessage("user created");
 	
@@ -60,7 +60,7 @@ public class ChatBoxBackEndTestCase {
 	 user.setEmail("abcd");
 	 user.setIsOnline('A');
 	 user.setRole("user");
-	 user.setStatus('A');
+	 user.setStatus("Accept");
 	
 	 boolean flag=userDao.update(user);
 	 assertEquals("updateUserTestCase",true,flag);
@@ -83,7 +83,7 @@ public class ChatBoxBackEndTestCase {
 	 user.setEmail("abcd");
 	 user.setIsOnline('A');
 	 user.setRole("user");
-	 user.setStatus('R');
+	 user.setStatus("Accept");
 	
 	 boolean flag=userDao.delete(user);
 	 assertEquals("deleteUserTestCase",true,flag);  

@@ -53,7 +53,7 @@ public class JobTestCase {
 	 jobapp.setDateApplied(new Date());
 	 //jobapp.setQualification("B.Tech");
 	 jobapp.setRemarks("OverQualified");
-	 jobapp.setStatus('A');
+	 jobapp.setStatus("A");
 	 
 	   jobapp.setUser(userDao.getById(76));
 	   jobapp.setJob(jobDao.getJobById(226));

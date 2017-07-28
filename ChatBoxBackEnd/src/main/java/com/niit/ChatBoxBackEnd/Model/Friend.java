@@ -18,6 +18,7 @@ public class Friend extends BaseDomain{
 	private int initiator;
 	private String status;
 	
+	
 
 	public int getFriendId() {
 		return friendId;
@@ -58,7 +59,6 @@ public class Friend extends BaseDomain{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
+
 
 }
