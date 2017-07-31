@@ -1,0 +1,23 @@
+package com.niit.ChatBoxBackEnd.Model;
+
+import java.util.Date;
+
+public class OutputMessage extends Message {
+	
+	private Date time;
+
+	public OutputMessage(Message original, Date time, int userId) {
+		super(original.getMsgId(), original.getMessage(), original.getUserId());
+		
+	
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+}

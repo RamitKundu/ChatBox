@@ -13,6 +13,7 @@ public interface UserDao {
 	public boolean update(User user);
 	public boolean delete(User user);
 	public User validate(String email,String password);
-	
+	public void setOnline(int userId);
+	public void setOffline(int userId);
 
 }

@@ -359,9 +359,10 @@ input[type=text], select {
 
 					<div class="panel-footer"
 						data-ng-repeat="myblogcmmnt in blogCtrl.commentmyList">
-
-						<b>Comment</b>:&nbsp{{myblogcmmnt.commentDsp}}</div>
-
+                        
+						<b>Comment</b>:&nbsp{{myblogcmmnt.commentDsp}}
+						<br>
+                          <b>CommentBy:{{myblogcmmnt.user.fullName}}</b>
 
 				</div>
 

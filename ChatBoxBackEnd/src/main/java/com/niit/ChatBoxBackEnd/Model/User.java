@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -33,8 +35,11 @@ public class User extends BaseDomain{
 	private String role;
 	@Column(unique=true)
 	private String email;
-	private int isOnline;
+	private String isOnline;
 	private String status;
+	
+	@Transient
+	MultipartFile file;
 	
 	@JsonManagedReference(value="user_userprofile movement")
 	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST,mappedBy="user")
@@ -52,9 +57,17 @@ public class User extends BaseDomain{
 //	public void setBlog(Set<Blog> blog) {
 //		this.blog = blog;
 //	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	
 	public int getUserId() {
 		return userId;
 	}
+	
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
@@ -95,10 +108,10 @@ public class User extends BaseDomain{
 //	public void setAddress(String address) {
 //		this.address = address;
 //	}
-	public int getIsOnline() {
+	public String getIsOnline() {
 		return isOnline;
 	}
-	public void setIsOnline(int isOnline) {
+	public void setIsOnline(String isOnline) {
 		this.isOnline = isOnline;
 	}
 	public String getStatus() {

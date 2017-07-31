@@ -22,15 +22,16 @@ app.controller('UserController', [
 				function(data){
 					$rootScope.registeredUser=data;
 				$location.path('/userprofile');
-				},function() {
-					console.log();		
+				},function(error) {
+					alert("Email or UserName already Exist..Try with another Email or UserName!!!!")
+					console.log(error);		
 				});
 			}
 
 			self.validateUser = function() {
 				console.log('validate user called');
 				//console.log('self.guset');
-				self.guset.isOnline=1;
+				
 				console.log(self.guest);
 				UserService.validate(self.guest).then(
 						function(data) {

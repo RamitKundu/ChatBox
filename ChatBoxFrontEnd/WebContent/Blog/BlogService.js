@@ -37,11 +37,11 @@ app.service('BlogService',[
 			}		
 		
 
-		this.myBlogs=function(userId){
+		this.myBlogs=function(buId){
 			console.log("MYBlogservice called");
 			
 			var deferred=$q.defer();
-			$http.get(RESTURL + '/getbloguserid/'+userId)
+			$http.get(RESTURL + '/getbloguserid/'+buId)
 			.then(
 			function(response){
 				/*this.blogList=response.data;

@@ -39,7 +39,7 @@ public class ChatBoxBackEndTestCase {
 	 //user.setAddress("abcde");
 	 //user.setContact(12345);
 	 user.setEmail("abcd");
-	 user.setIsOnline('A');
+	 user.setIsOnline("A");
 	 user.setRole("user");
 	 user.setStatus("New");
 	// user.setErrorCode("200");
@@ -58,7 +58,7 @@ public class ChatBoxBackEndTestCase {
 //	 user.setAddress("abcd");
 //	 user.setContact(12345);
 	 user.setEmail("abcd");
-	 user.setIsOnline('A');
+	 user.setIsOnline("A");
 	 user.setRole("user");
 	 user.setStatus("Accept");
 	
@@ -81,7 +81,7 @@ public class ChatBoxBackEndTestCase {
 //	 user.setAddress("abcde");
 //	 user.setContact(12345);
 	 user.setEmail("abcd");
-	 user.setIsOnline('A');
+	 user.setIsOnline("A");
 	 user.setRole("user");
 	 user.setStatus("Accept");
 	

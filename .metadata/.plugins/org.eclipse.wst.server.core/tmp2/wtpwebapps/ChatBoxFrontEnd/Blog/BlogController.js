@@ -53,9 +53,10 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
 			self.getmyBlog= function() {
 				//self.blog.user=$rootScope.currentUser;
 				console.log("show my MyBlogList ");
-				
-				BlogService.myBlogs($rootScope.currentUser.userId).then(function(response) {
-					$cookieStore.get('currentUser').userId;
+				self.buId=$cookieStore.get('currentUser').userId;
+				console.log(self.buId);
+				BlogService.myBlogs(self.buId).then(function(response) {
+					
 					 //$rootScope.currentUser.userId;
 					console.log(self.blog.user);
 					self.myBlog = response.data;
@@ -87,6 +88,7 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
 				self.writeBlog=false;
 				self.sendMyblogobj=false;
 				self.manageBlogs=false;
+				//previously it was selectedBlog.comments
 				self.commentList=self.selectedBlog.comments;
 				console.log(self.selectedBlog.comments)
 			}

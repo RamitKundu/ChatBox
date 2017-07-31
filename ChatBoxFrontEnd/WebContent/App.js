@@ -162,7 +162,15 @@ app.config(function($routeProvider, $locationProvider) {
 		controller : 'FriendController',
     	controllerAs : 'frndCtrl'
 
+	})
+	
+	.when('/chat', {
+
+		templateUrl : 'Chat/Chat.html',
+		controller : 'ChatController',
+
 	});
+
 
 
 

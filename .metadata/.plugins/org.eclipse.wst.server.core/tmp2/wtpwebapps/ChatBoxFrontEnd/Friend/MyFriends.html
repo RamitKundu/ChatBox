@@ -2,7 +2,7 @@
 <div ng-include="'./User/UserProfile.html'"></div>
 <div class="row" ng-init="frndCtrl.seeAllMyFriend()">
 	<div class="col-md-9" ng-repeat="frnd in frndCtrl.friendlist">
-	<div class="row">
+		<div class="row">
 			<div class="col-md-3">
 				<img src="" class="img-circle">
 			</div>
@@ -24,7 +24,14 @@
 			<div class="col-md-2">
 				<b>Friend</b>
 			</div>
-	
+			<div class="col-md-2">
+				<b><a href="#!chat" class="btn btn-sm btn-success" ng-show="frnd.user.isOnline=='OnLine'"><span
+						class="glyphicon glyphicon-user"></span>Chat</a></b>
+			</div>
+			<div class="col-md-2">
+				<b>{{frnd.user.isOnline}}</b>
+			</div>
+
 		</div>
 	</div>
-	</div>
+</div>

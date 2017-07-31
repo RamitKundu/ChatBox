@@ -14,8 +14,8 @@ app.service('UserService', [
 				function(response){
 					deferred.resolve(response.data);
 					},
-					function(){
-						deferred.reject();
+					function(error){
+						deferred.reject(error);
 					});
 				return deferred.promise;
 				}		

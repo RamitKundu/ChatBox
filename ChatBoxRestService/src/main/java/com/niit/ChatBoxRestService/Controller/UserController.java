@@ -91,11 +91,12 @@ public class UserController {
 	@PostMapping("/login")
 	public ResponseEntity<User> validateUser(@RequestBody User u) {
    		user = userDao.getByEmail(u.getEmail());
-   		user.setIsOnline(0);
-   		userDao.update(u);
+   		
+   		
    		
 		if (user != null && ((u.getPassword()).equals(user.getPassword()))) {
-			
+			    user.setIsOnline("OnLine");
+			    userDao.setOnline(user.getUserId());
 				user.setErrorCode("200");
 				user.setErrorMessage("You have logged in successfully " +user.getFullName());
 				return new ResponseEntity<User>(user,HttpStatus.OK);

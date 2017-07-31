@@ -105,4 +105,14 @@ public class UserDaoImpl implements UserDao{
 			
 	}
 
+	public void setOnline(int userId) {
+		sessionFactory.getCurrentSession().createQuery("update User set isOnline='OnLine' where userID='"+userId+"'").executeUpdate();
+		
+	}
+
+	public void setOffline(int userId) {
+		sessionFactory.getCurrentSession().createQuery("update User set isOnline='OffLine' where userID='"+userId+"'").executeUpdate();
+		
+	}
+
 }

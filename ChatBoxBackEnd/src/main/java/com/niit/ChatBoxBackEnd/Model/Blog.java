@@ -32,7 +32,7 @@ public class Blog extends BaseDomain{
 	private String reason;
 	private int likes;
 	private int views;
-	//@JsonBackReference(value="user_blog movement")
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private User user;
 	@JsonManagedReference(value="blogcomment_movement")
