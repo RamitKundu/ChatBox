@@ -8,12 +8,14 @@ app.controller('UserController', [
 		'$cookieStore',
 		function(UserService, $http, $scope, $location,$rootScope,$cookieStore){
 			var self = this;
+			
 			self.user = {};
 			self.guest={};
-//			if($cookieStore.get('currentUser'))
-//				{
+
+				
 				self.currentUser=$cookieStore.get('currentUser');
-				//}
+				
+				
 			self.createUser=function(){
 				console.log('adduser called');
 				self.user.status="New";
@@ -32,14 +34,16 @@ app.controller('UserController', [
 				console.log('validate user called');
 				//console.log('self.guset');
 				
+				console.log(self.currentUserId);
 				console.log(self.guest);
 				UserService.validate(self.guest).then(
+						
 						function(data) {
 						self.responsedata=data;
 							
 							console.log(self.responsedata);
 							//$rootScope.currentUserName=data.name;
-							
+							console.log(self.responsedata.userId)
 							$rootScope.currentUser=self.responsedata;
 							
 							$cookieStore.put('currentUser',self.responsedata);
@@ -85,6 +89,7 @@ app.controller('UserController', [
 					console.log(error);		
 				});
 			}
+			
 			
 			
 			

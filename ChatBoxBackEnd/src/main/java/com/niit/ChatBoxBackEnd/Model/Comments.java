@@ -24,7 +24,7 @@ public class Comments {
 	private int commentId;
 	private String commentDsp;
     
-    @ManyToOne(cascade=CascadeType.PERSIST)
+     @ManyToOne
 	  private User user;
      @JsonBackReference(value="blogcomment_movement")
      @ManyToOne(cascade=CascadeType.PERSIST)

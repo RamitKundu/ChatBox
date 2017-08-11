@@ -1,5 +1,6 @@
 package com.niit.ChatBoxRestService.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.niit.ChatBoxBackEnd.Dao.UserDao;
 import com.niit.ChatBoxBackEnd.Model.User;
@@ -109,6 +114,22 @@ public class UserController {
 		}
 		
 	}
+	
+	//Upload Images.....!!!
+	
+/*	 @ResponseStatus(HttpStatus.OK)
+	    @RequestMapping(value = "/upload")
+	    public void upload(@RequestParam("file") MultipartFile file ) throws IOException {
+
+	        byte[] bytes;
+
+	        if (!file.isEmpty()) {
+	             bytes = file.getBytes();
+	            //store file in storage
+	        }
+
+	        System.out.println(String.format("receive %s from %s", file.getOriginalFilename()));
+	    }*/
 
 
 }

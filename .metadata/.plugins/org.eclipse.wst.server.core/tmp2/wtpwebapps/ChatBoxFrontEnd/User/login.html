@@ -65,10 +65,10 @@ header .btn-header-login {
 			<form name="form" role="form">
 			<div class="col-sm-6 hidden-xs">
 				<div class="row">
-					<div class="col-sm-5">
-						<div class="form-group" >
+					<div class="col-sm-4">
+						<div class="form-group" > <!-- ng-hide="currentUser.userId" -->
 							<input type="text" class="form-control"
-								placeholder="Email Address" ng-model="userCtrl.guest.email" required>
+								placeholder="Email Address" ng-model="userCtrl.guest.email" required >
 							<div class="login-bottom-text checkbox hidden-sm">
 								<label> <input type="checkbox" id=""> Keep me
 									sign in
@@ -76,17 +76,27 @@ header .btn-header-login {
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-5">
-						<div class="form-group" >
+					<div class="col-sm-4">
+						<div class="form-group" ><!--ng-hide="currentUser.userId"  -->
 							<input type="password" class="form-control"
 								placeholder="Password" ng-model="userCtrl.guest.password" required>
 
 						</div>
 					</div>
 					<div class="col-sm-2">
-						<div class="form-group">
+						<div class="form-group"><!-- ng-hide="currentUser.userId"  -->
 							<!-- <input type="submit" value="login" class="btn btn-default btn-header-login" ng-click="validateUser()"> -->
 							 <a href class="btn btn-default" ng-click="userCtrl.validateUser()">Login</a>
+							<!-- <input type="submit" class="btn btn-primary" ng-click="userCtrl.validateUser" value="Login" > -->
+						</div>
+					</div>
+					<!-- Logout   -->
+					
+					
+					<div class="col-sm-2">
+						<div class="form-group" ><!--ng-show="currentUser.userId"  -->
+							<!-- <input type="submit" value="login" class="btn btn-default btn-header-login" ng-click="validateUser()"> -->
+							 <a href class="btn btn-default" ng-click="userCtrl.validateUser()">Logout</a>
 							<!-- <input type="submit" class="btn btn-primary" ng-click="userCtrl.validateUser" value="Login" > -->
 						</div>
 					</div>

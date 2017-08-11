@@ -36,7 +36,28 @@ app.service('BlogService',[
 			return deferred.promise;
 			}		
 		
+    
+		this.listBlogAdmin=function(){
+			console.log("Blogservice called");
+			
+			var deferred=$q.defer();
+			$http.get(RESTURL + '/getallblog')
+			.then(
+			function(response){
+				/*this.blogList=response.data;
+				console.log(this.blogList);*/
+				deferred.resolve(response);
+				},
+				function(error){
+					deferred.reject(error);
+				});
+			return deferred.promise;
+			}		
+		
 
+		
+		
+		
 		this.myBlogs=function(buId){
 			console.log("MYBlogservice called");
 			
@@ -70,49 +91,38 @@ app.service('BlogService',[
 			return deferred.promise;
 			}		
 
-		this.addMyComment=function(mycomment){
-			console.log("Add comment of Myblog Service called");
-			console.log(comment);
+
+		this.updateblog=function(selectedBlog){
 			var deferred=$q.defer();
-			$http.post(RESTURL + '/addcomments',mycomment)
+			$http.post(RESTURL + '/updateblogAdmin',selectedBlog)
 			.then(
 			function(response){
-				deferred.resolve(response.data);
+				deferred.resolve();
 				},
 				function(error){
-					deferred.reject(error);
+					deferred.reject();
 				});
 			return deferred.promise;
-			}		
+			}	
 		
-		this.rejectblog=function(blogId){	
-			console.log("Reject Blog Service called");
-			var deferred=$q.defer();
-			$http.get(RESTURL + '/rejectblog/'+blogId)
-			.then(
-			function(response){
-				deferred.resolve(response.data);
-				},
-				function(error){
-					deferred.reject(error);
-				});
-			return deferred.promise;
-			}		
 		
-		this.acceptblog=function(blogId){	
-			console.log("Reject Blog Service called");
+
+		this.listBlogAdmin=function(){
+			console.log("Blogservice called");
+			
 			var deferred=$q.defer();
-			$http.get(RESTURL + '/acceptblog/'+blogId)
+			$http.get(RESTURL + '/getallblog')
 			.then(
 			function(response){
-				deferred.resolve(response.data);
+				/*this.blogList=response.data;
+				console.log(this.blogList);*/
+				deferred.resolve(response);
 				},
 				function(error){
 					deferred.reject(error);
 				});
 			return deferred.promise;
 			}		
-	
 	
 	
 	}

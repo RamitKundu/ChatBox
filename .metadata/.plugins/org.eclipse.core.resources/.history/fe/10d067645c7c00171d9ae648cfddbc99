@@ -1,0 +1,32 @@
+
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>BlogTitle</th>
+			<th>BlogDescription</th>
+			<th>PostedBy</th>
+			<th>Remarks</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+
+	<tbody ng-init="blogCtrl.getAdminBlogList(selectedBlog)">
+		<tr>
+			<td>{{jobCtrl.selectedJob.job.title}}</td>
+			<td>{{jobCtrl.selectedJob.job.company}}</td>
+			<td>{{jobCtrl.selectedJob.job.description}}</td>
+			<td>{{jobCtrl.selectedJob.user.fullName}}</td>
+			<td>{{jobCtrl.selectedJob.user.userProfile.state}}</td>
+			
+		</tr>
+	</tbody>
+
+
+
+
+
+</table>

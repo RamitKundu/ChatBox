@@ -1,0 +1,15 @@
+<form method="post" enctype="multipart/formdata" action="http://localhost:8002/ChatBoxRestService/upload">
+
+<input type="text" name="fileName">
+<input type="file" name="uploadedFile">
+<br>
+<input type="submit" value ="upload">
+
+
+
+
+
+
+
+
+</form>

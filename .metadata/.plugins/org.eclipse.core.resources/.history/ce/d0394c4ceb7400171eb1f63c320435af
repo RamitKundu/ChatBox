@@ -1,5 +1,0 @@
-package com.niit.ChatBoxRestService.Config;
-
-public class WebSocketConfig {
-
-}

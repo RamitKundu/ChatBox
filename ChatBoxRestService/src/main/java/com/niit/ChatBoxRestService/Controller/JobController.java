@@ -53,7 +53,7 @@ public class JobController {
 	@PostMapping("/addapplyjob")
 	public ResponseEntity<JobApplication> addJob(@RequestBody JobApplication jobapp){
 		jobapp.setDateApplied(new Date());;
-		//jobapp.setStatus('A');
+		jobapp.setStatus("New");
 		jobDao.addJob(jobapp);
 		
 		

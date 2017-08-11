@@ -37,9 +37,11 @@ public class User extends BaseDomain{
 	private String email;
 	private String isOnline;
 	private String status;
+	//private String name;
 	
-	@Transient
-	MultipartFile file;
+//	
+//	@Transient
+//	MultipartFile file;
 	
 	@JsonManagedReference(value="user_userprofile movement")
 	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.PERSIST,mappedBy="user")
@@ -57,12 +59,22 @@ public class User extends BaseDomain{
 //	public void setBlog(Set<Blog> blog) {
 //		this.blog = blog;
 //	}
-	public MultipartFile getFile() {
-		return file;
-	}
-	public void setFile(MultipartFile file) {
-		this.file = file;
-	}
+	
+	
+	
+//	
+//	public MultipartFile getFile() {
+//		return file;
+//	}
+//	public String getName() {
+//		return name;
+//	}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	public void setFile(MultipartFile file) {
+//		this.file = file;
+//	}
 	
 	public int getUserId() {
 		return userId;

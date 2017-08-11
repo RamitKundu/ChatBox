@@ -1,6 +1,6 @@
 console.log("hello m at app.js");
-var app = angular.module('myApp', [ 'ngRoute','ngCookies' ]);
-app.constant('RESTURL', 'http://localhost:8082/ChatBoxRestService');
+var app = angular.module('myApp', [ 'ngRoute','ngCookies','ngFileUpload' ]);
+app.constant('RESTURL', 'http://localhost:8005/ChatBoxRestService');
 
 app.config(function($routeProvider, $locationProvider) {
 	console.log("hello m at app.js")
@@ -24,9 +24,44 @@ app.config(function($routeProvider, $locationProvider) {
 	})
 
 	.when('/blog', {
+		templateUrl : 'Blog/AllBlogs.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
+	.when('/postblog', {
 		templateUrl : 'Blog/Blog.html',
 	    controller : 'BlogController',
 		controllerAs : 'blogCtrl'
+	})
+	.when('/blogsadmin', {
+		templateUrl : 'Blog/BlogAdmin.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
+	
+	.when('/getallblogs', {
+		templateUrl : 'Blog/AllBlogs.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
+	
+	.when('/getmyblogs', {
+		templateUrl : 'Blog/MyBlog.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
+//	.when('/getblogsforadmin', {
+//		templateUrl : 'Blog/AdminBlogList.html',
+//	    controller : 'BlogController',
+//		controllerAs : 'blogCtrl'
+//	})
+	
+	.when('/blogcmmnt/:blogId', {
+
+		templateUrl : 'Blog/BlogComment.html',
+		controller : 'BlogController',
+    	controllerAs : 'blogCtrl'
+
 	})
 	
 
@@ -169,7 +204,22 @@ app.config(function($routeProvider, $locationProvider) {
 		templateUrl : 'Chat/Chat.html',
 		controller : 'ChatController',
 
+	})
+	.when('/upload', {
+
+		templateUrl : 'Upload/Upload.html',
+		controller : 'UploadController',
+		
+	})
+	
+	.when('/event', {
+
+		templateUrl : 'Event/Event.html',
+		controller : 'EventController',
+    	controllerAs : 'eventCtrl'
+
 	});
+
 
 
 

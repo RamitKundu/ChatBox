@@ -1,20 +1,12 @@
 app.controller('BlogController', [ 'BlogService', '$http', '$scope',
-		'$location','$rootScope','$cookieStore', function(BlogService, $http, $scope, $location,$rootScope,$cookieStore) {
+		'$location','$rootScope','$cookieStore','$routeParams', function(BlogService, $http, $scope, $location,$rootScope,$cookieStore,$routeParams) {
 			var self = this;
 			self.blog = {};
-			self.bloglist = [];
-			//self.selectBlog=[];
-			self.allBlogs=false;
-			self.writeBlog=true;
-			self.myBlog=[];
-			self.myBlogList=false;
-			self.comment={};
-			self.sendblogobj=false;
-			self.comments=[];
-			self.sendMyblogobj=false;
-			self.mycomment={};
-			self.manageBlogs=false;
 			
+			self.myBlog=[];
+			//self.selectBlog=[];
+			self.allblogs=false;
+			self.editbyadmin=true;
 			
 			
 			self.createBlog = function() {
@@ -31,203 +23,110 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
 					console.log();
 				});
 			}
-
-			self.getBlogList = function() {
+ 
+              self.getBlogList = function() {
 				
 				console.log("BlogList controller called");
 				BlogService.listBlog().then(function(response) {
 					self.bloglist = response.data;
 					console.log(self.bloglist);
-					 //$location.path('/getallblogs');
-					self.allBlogs=true;
-					self.writeBlog=false;
-					self.myBlogList=false;
-					self.sendblogobj=false;
-					self.sendMyblogobj=false;
-					self.manageBlogs=false;
+					
+					self.getBlogParams();
 				}, function(error) {
 					console.log(error);
 				});
 			}
+			self.getBlogList();
 			
-			self.getmyBlog= function() {
-				//self.blog.user=$rootScope.currentUser;
-				console.log("show my MyBlogList ");
-				self.buId=$cookieStore.get('currentUser').userId;
-				console.log(self.buId);
-				BlogService.myBlogs(self.buId).then(function(response) {
-					
-					 //$rootScope.currentUser.userId;
-					console.log(self.blog.user);
-					self.myBlog = response.data;
-					console.log(self.bloglist);
-					console.log(self.myBlog);
-					 //$location.path('/getallblogs');
-					self.myBlogList=true;
-					self.allBlogs=false;;
-					self.writeBlog=false;
-					self.sendblogobj=false;
-					self.sendMyblogobj=false;
-					self.manageBlogs=false;
-				}, function(error) {
-					console.log(error);
-				});
-			}
-    //comments for all blogs
+              self.getmyBlog= function() {
+  				//self.blog.user=$rootScope.currentUser;
+  				console.log("show my MyBlogList ");
+  				self.buId=$cookieStore.get('currentUser').userId;
+  				console.log(self.buId);
+  				BlogService.myBlogs(self.buId).then(function(response) {
+  					
+  					
+  					self.myBlogList = response.data;
+  					console.log(self.bloglist);
+  					console.log(self.myBlog);
+  					 $location.path('/getmyblogs');
+  					
+  				}, function(error) {
+  					console.log(error);
+  				});
+  			}
 			
-			self.sendBlog= function(blg) {
-				console.log("sendBlog called")
-				self.selectedBlog=blg;
-				console.log(self.selectedBlog)
-				$rootScope.currentBlog=self.selectedBlog;
-				console.log($rootScope.currentBlog)
-				
-				self.sendblogobj=true;	
-				self.myBlogList=false;
-				self.allBlogs=false;;
-				self.writeBlog=false;
-				self.sendMyblogobj=false;
-				self.manageBlogs=false;
-				//previously it was selectedBlog.comments
-				self.commentList=self.selectedBlog.comments;
-				console.log(self.selectedBlog.comments)
-			}
-				
-				self.createComment=function() {
-					//self.blog.user=$rootScope.currentUser;
-					console.log("Add Comment called");
-					//self.selectedBlog=blg;
-					console.log(self.selectedBlog)
-					self.sendblogobj=true;	
-				self.myBlogList=false;
-				self.allBlogs=false;;
-				self.writeBlog=false;
-				self.sendMyblogobj=false;
-				self.manageBlogs=false;
-					//console.log(self.blog.guest);
+              self.getBlogParams = function() {
+  				if($routeParams.blogId){
+  				self.selectedBlogId = $routeParams.blogId;
+  				console.log($routeParams.blogId);
+  				console.log(self.bloglist);		
+  				console.log("Get Param for Blog called")
+  				console.log(self.selectedBlogId );
+  				for (var i = 0; i < self.bloglist.length; i++) {
+  					if (self.bloglist[i].blogId == self.selectedBlogId ) {
+  						self.blogs = self.bloglist[i];
+  					}
+  				}
+  			}
+                 console.log(self.blogs);
+  			}
+			
+              self.createComment=function() {
 					
-					self.comment.blog = {blogId:self.selectedBlog.blogId};
-					console.log('self.comment.blog')
-					console.log(self.comment.blog)
+					console.log("Add Comment for Blog called");
 					
-					self.comment.user = $rootScope.currentUser;
-					console.log('self.comment.user')
+					self.comment.user =$rootScope.currentUser;
+					
+					self.comment.blog =self.blogs ;
+					
+				
 					console.log(self.comment.user)
 
 					BlogService.addComment(self.comment).then(function(response) {
-						self.comment = response.data;
-					//	$location.path('/cmmnt');
+						
+					alert("Comment posted successfully..:)")
 					}, function(error) {
 						console.log(error);
 					});
 				}
-				
-	
-                 //comments for my blog
-
-				self.sendmyBlog= function(blg) {
-					console.log("sendBlog called")
-					self.selectedMyBlog=blg;
-					console.log(self.selectedMyBlog)
-					self.sendMyblogobj=true;
-					self.sendblogobj=false;
-					self.myBlogList=false;
-					self.allBlogs=false;;
-					self.writeBlog=false;
-					self.manageBlogs=false;
-					self.commentmyList=self.selectedMyBlog.comments;
-					console.log(self.selectedMyBlog.comments)
-				}
-				
 			
-				self.createCommentForMyBlog=function() {
-					//self.blog.user=$rootScope.currentUser;
-					console.log("Add Comment for My Blog called");
-					//self.selectedBlog=blg;
-					console.log(self.selectedMyBlog)
-					self.sendMyblogobj=true;
-					self.sendblogobj=false;
-					self.myBlogList=false;
-					self.allBlogs=false;;
-					self.writeBlog=false;
-					self.manageBlogs=false;
-					//console.log(self.blog.guest);
+              self.getBlogListAdmin = function() {
+            	  self.allblogs=true;
+      			  self.editbyadmin=false;
 					
-					self.mycomment.blog = {blogId:self.selectedMyBlog.blogId};
-					console.log(self.mycomment)
-					//console.log(self.comment.blog)
-					
-					self.mycomment.user = $rootScope.currentUser;
-					console.log(self.mycomment)
-					//console.log(self.comment.user)
-
-					BlogService.addMyComment(self.mycomment).then(function(response) {
-						self.comment = response.data;
-					//	$location.path('/cmmnt');
-					}, function(error) {
-						console.log(error);
-					});
-				}
-				self.getAdminBlogList = function() {
-					
-					console.log("Admin BlogList controller called");
-					BlogService.listBlog().then(function(response) {
-						self.bloglist = response.data;
-						console.log(self.bloglist);
-						 //$location.path('/getallblogs');
-						self.allBlogs=false;
-						self.writeBlog=false;
-						self.myBlogList=false;
-						self.sendblogobj=false;
-						self.sendMyblogobj=false;
-						self.manageBlogs=true;
-					}, function(error) {
-						console.log(error);
-					});
-				}
-				
-	        self.rejectBlog = function(blogId) {
-				console.log("Reject Blog controller called");
-				self.sendMyblogobj=false;
-				self.sendblogobj=false;
-				self.myBlogList=false;
-				self.allBlogs=false;;
-				self.writeBlog=false;
-				self.manageBlogs=true;
-				alert("Blog is Rejected.....!!!!!");
-				BlogService.rejectblog(blogId).then(function(response) {
-					console.log(response.data)
-					self.bloglist = response.data;
-//					$rootScope.RejectedBlogs=self.bloglist;
-//					console.log($rootScope.RejectedBlogs)
-				}, function(error) {
-					console.log(error);
-				});
-			}
-	        
-	        self.acceptBlog = function(blogId) {
-				console.log("Accept Blog controller called");
-				self.sendMyblogobj=false;
-				self.sendblogobj=false;
-				self.myBlogList=false;
-				self.allBlogs=false;;
-				self.writeBlog=false;
-				self.manageBlogs=true;
-				alert("Blog is Accepted....!!!!!");
-				BlogService.rejectblog(blogId).then(function(response) {
-					console.log(response.data)
-					self.bloglist = response.data;	
-				}, function(error) {
-					console.log(error);
-				});
-			}
-				
-			
-			
-			
-			
-			
-		
+  				console.log("BlogList Admin controller called");
+  				BlogService.listBlogAdmin().then(function(response) {
+  					self.bloglist = response.data;
+  					console.log(self.bloglist);
+  					$location.path("/blogsadmin")
+  				}, function(error) {
+  					console.log(error);
+  				});
+  			}
+              
+              self.getAdminBlogList = function(blg) {
+           	  self.allblogs=false;
+    			self.editbyadmin=true;
+    			
+  				console.log("Admin BlogList controller called");
+  				self.selectedBlog=blg;
+  				console.log(self.selectedBlog);
+  			}
+              
+              self.updateBlog = function() {
+  				
+  				console.log("Update Blog controller called");
+  				
+  				BlogService.updateblog(self.selectedBlog).then(function() {
+  					
+  					//self.blog = response.data;
+  					alert("Update is posted successfully..!!!!")
+  					
+  				}, function() {
+  					console.log();
+  				});
+  			}
 			
 			
 		}

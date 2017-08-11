@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.ChatBoxBackEnd.Dao.BlogDao;
 import com.niit.ChatBoxBackEnd.Model.Blog;
+import com.niit.ChatBoxBackEnd.Model.JobApplication;
 import com.niit.ChatBoxBackEnd.Model.User;
 
 @RestController
@@ -79,29 +80,14 @@ public class BlogController {
 		}
 		
 	
-	@GetMapping("/acceptblog/{blogId}")
-	public ResponseEntity<Blog> acceptBlog(@PathVariable("blogId") int blogId){
-		Blog blog=blogDao.getById(blogId);
-		blog=updateStatus(blogId, "Accept");
-		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
-	}
-	
-	@GetMapping("/rejectblog/{blogId}")
-	public ResponseEntity<Blog> rejecttBlog(@PathVariable("blogId") int blogId){
-		Blog blog=blogDao.getById(blogId);
-		blog=updateStatus(blogId, "Reject");
-		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
-	}
-	
-	
-	private Blog updateStatus(int blogId,String status){
-		
-		blog=blogDao.getById(blogId);
-		blog.setStatus(status);
-		blogDao.updateBlog(blog);
-		
-		return blog;
-	}
+	//Update of Blog by admin
+		@PostMapping("/updateblogAdmin")
+		public ResponseEntity<Blog> updateBlog(@RequestBody Blog blog) {
+			
+			blogDao.updateBlog(blog);
+			return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+
+		}
 //	
 //	@DeleteMapping("/deleteblog")
 //	public ResponseEntity<Blog> deleteBlog(@RequestBody Blog blog){

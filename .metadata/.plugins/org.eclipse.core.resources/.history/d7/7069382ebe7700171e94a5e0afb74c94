@@ -1,0 +1,11 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+
+<div class="row">
+<input file-model="selectedUploadFile" type="file" name="file">
+<br>
+<a href class="btn-btn-default" ng-click="uploadCtrl.uploadFile()">Upload</a>
+
+
+</div>
