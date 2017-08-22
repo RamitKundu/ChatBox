@@ -34,4 +34,9 @@ public class EventDaoImpl implements EventDao{
 		return sessionFactory.getCurrentSession().createQuery("from Event").list();
 	}
 
+	public Event getByEventId(int eventId) {
+		
+		return sessionFactory.getCurrentSession().get(Event.class, eventId);
+	}
+
 }

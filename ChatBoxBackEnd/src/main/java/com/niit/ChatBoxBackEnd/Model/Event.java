@@ -22,10 +22,19 @@ public class Event {
 	private String description;
 	private Date dateTime;
 	private String imageURL;
+	private String venue;
 	@Transient
 	private MultipartFile file;
 	
 	
+	
+	
+	public String getVenue() {
+		return venue;
+	}
+	public void setVenue(String venue) {
+		this.venue = venue;
+	}
 	public MultipartFile getFile() {
 		return file;
 	}

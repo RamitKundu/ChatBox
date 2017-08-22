@@ -37,6 +37,7 @@ public class User extends BaseDomain{
 	private String email;
 	private String isOnline;
 	private String status;
+    
 	//private String name;
 	
 //	
@@ -144,6 +145,8 @@ public class User extends BaseDomain{
 	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
 	}
+
+	
 	
 	
 

@@ -90,6 +90,18 @@ app.controller('UserController', [
 				});
 			}
 			
+			self.logOut=function(){
+				
+				console.log("Logout Controller called");
+				
+				$cookieStore.remove('currentUser');
+				UserService.logout();
+				$location.path('/logout');
+				
+			}
+			
+			
+			
 			
 			
 			

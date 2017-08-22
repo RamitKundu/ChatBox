@@ -1,0 +1,38 @@
+<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+
+<div class="row">
+<div class="col-md-9 col-md-offset-1">
+<div class="row" data-ng-repeat="event in eventCtrl.eventlist">
+<div class="col-md-12">
+<div class="panel panel-default">
+<div class="panel-heading">
+<div class="col-md-4">
+						<img class="lib-img-show" src="file:///D:/Collaboration/2.png" width="70px" height="70px">
+					</div>
+
+<div class="col-md-1">
+						<strong><a class="post-title" href=""><b>Name:</b></a></strong>
+					</div>
+
+<div class="col-md-3">
+						<strong><a class="post-title" href=""><b>{{event.name}}</b></a></strong>
+					</div>
+
+
+<div class="col-md-1">
+						<strong><a class="post-title" href=""><b>Venue:</b></a></strong>
+					</div>
+					
+				<div class="col-md-3">
+						<strong><a class="post-title" href=""><b>{{event.venue}}</b></a></strong>
+					</div>	
+
+
+</div>
+</div>
+  </div>
+  </div>
+  </div>
+  </div>

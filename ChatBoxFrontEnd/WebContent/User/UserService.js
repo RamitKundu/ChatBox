@@ -62,7 +62,22 @@ app.service('UserService', [
 				}		
 			
 			
-			
+			this.logout=function(){
+				console.log("Logout Service Called");
+				
+				var deferred=$q.defer();
+				$http.get(RESTURL + '/logout')
+				.then(
+				function(response){
+					
+					deferred.resolve(response);
+					},
+					function(error){
+						deferred.reject(error);
+					});
+				return deferred.promise;
+				}	
+				
 			
 			
 			

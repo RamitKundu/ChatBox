@@ -1,0 +1,28 @@
+<style>
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+</style>
+
+
+
+<div class="footer">
+	 <div class="row">
+  <hr>
+    <div class="col-lg-12">
+      <div class="col-md-8">
+        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>    
+      </div>
+      <div class="col-md-4">
+        <p class="muted pull-right">© 2013 Company Name. All rights reserved</p>
+      </div>
+    </div>
+  </div>
+</div>

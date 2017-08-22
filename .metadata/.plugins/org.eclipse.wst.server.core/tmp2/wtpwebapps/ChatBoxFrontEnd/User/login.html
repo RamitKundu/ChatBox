@@ -56,7 +56,7 @@ header .btn-header-login {
 </style>
 
 <header>
-	<div class="container">
+	<div class="container" ng-controller="UserController as userCtrl">
 		<div class="row">
 			<div class="col-sm-6">
 				<h3><a href ="#!afterlogin">ChatBox</a></h3>
@@ -66,7 +66,7 @@ header .btn-header-login {
 			<div class="col-sm-6 hidden-xs">
 				<div class="row">
 					<div class="col-sm-4">
-						<div class="form-group" > <!-- ng-hide="currentUser.userId" -->
+						<div class="form-group" ng-hide="currentUser.userId"> <!--  -->
 							<input type="text" class="form-control"
 								placeholder="Email Address" ng-model="userCtrl.guest.email" required >
 							<div class="login-bottom-text checkbox hidden-sm">
@@ -77,14 +77,14 @@ header .btn-header-login {
 						</div>
 					</div>
 					<div class="col-sm-4">
-						<div class="form-group" ><!--ng-hide="currentUser.userId"  -->
+						<div class="form-group" ng-hide="currentUser.userId"><!--ng-hide="currentUser.userId"  -->
 							<input type="password" class="form-control"
 								placeholder="Password" ng-model="userCtrl.guest.password" required>
 
 						</div>
 					</div>
 					<div class="col-sm-2">
-						<div class="form-group"><!-- ng-hide="currentUser.userId"  -->
+						<div class="form-group" ng-hide="currentUser.userId" ><!--ng-hide="currentUser.userId"  -->
 							<!-- <input type="submit" value="login" class="btn btn-default btn-header-login" ng-click="validateUser()"> -->
 							 <a href class="btn btn-default" ng-click="userCtrl.validateUser()">Login</a>
 							<!-- <input type="submit" class="btn btn-primary" ng-click="userCtrl.validateUser" value="Login" > -->
@@ -94,9 +94,9 @@ header .btn-header-login {
 					
 					
 					<div class="col-sm-2">
-						<div class="form-group" ><!--ng-show="currentUser.userId"  -->
+						<div class="form-group"  ng-show="currentUser.userId" ><!-- -->
 							<!-- <input type="submit" value="login" class="btn btn-default btn-header-login" ng-click="validateUser()"> -->
-							 <a href class="btn btn-default" ng-click="userCtrl.validateUser()">Logout</a>
+							 <a href class="btn btn-default" ng-click="userCtrl.logOut()">Logout</a>
 							<!-- <input type="submit" class="btn btn-primary" ng-click="userCtrl.validateUser" value="Login" > -->
 						</div>
 					</div>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.niit.ChatBoxBackEnd.Dao.EventDao;
 import com.niit.ChatBoxBackEnd.Model.Event;
 
@@ -28,6 +29,8 @@ public class EventController {
 	
 	@Autowired
 	EventDao eventDao;
+	
+	
 	
 	
 	@PostMapping("/addevent")
@@ -49,16 +52,24 @@ public class EventController {
 	}
     
 	@PostMapping("/uploadfile")
-	public @ResponseBody String uploadFile(@RequestParam("file") MultipartFile file){
+	public @ResponseBody String uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("event")String evnt){
 		
 		String fileName=null;
 		
 		if(!file.isEmpty()){
 			try {
-			fileName=file.getOriginalFilename();
-			
+			 fileName=file.getOriginalFilename();
+             Gson gson=new Gson(); 
+             
+             Event event = gson.fromJson(evnt, Event.class);
+             
+			System.out.println(fileName);
+			event.setImageURL(fileName);
+			event.setDateTime(new Date());
+			eventDao.save(event);
 				byte [] bytes=file.getBytes();
 				BufferedOutputStream buffer= new BufferedOutputStream(new FileOutputStream(new File("D:/Collaboration/" +fileName)));
+			
 				buffer.write(bytes);
 				buffer.close();
 				 return "You have successfully uploaded " + fileName;

@@ -8,6 +8,7 @@ public interface EventDao {
 	
 	public boolean save(Event event);
 	 public List<Event> getAllEvent();
+	 public  Event getByEventId(int eventId);
 	
 
 }

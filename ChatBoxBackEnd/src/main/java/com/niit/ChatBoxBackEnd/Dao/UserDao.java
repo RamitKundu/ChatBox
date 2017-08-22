@@ -15,5 +15,5 @@ public interface UserDao {
 	public User validate(String email,String password);
 	public void setOnline(int userId);
 	public void setOffline(int userId);
-
+    
 }

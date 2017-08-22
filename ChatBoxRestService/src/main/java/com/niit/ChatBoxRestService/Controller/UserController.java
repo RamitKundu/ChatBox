@@ -130,6 +130,15 @@ public class UserController {
 
 	        System.out.println(String.format("receive %s from %s", file.getOriginalFilename()));
 	    }*/
+	
+
+	@GetMapping("/logout")
+	public ResponseEntity<User> Logout() {
+		user.setIsOnline("OffLine");
+		userDao.update(user);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+
+	}
 
 
 }

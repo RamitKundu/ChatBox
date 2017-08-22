@@ -214,28 +214,32 @@ app.config(function($routeProvider, $locationProvider) {
 	
 	.when('/event', {
 
-		templateUrl : 'Event/Event.html',
+		templateUrl : 'Event/EventList.html',
 		controller : 'EventController',
     	controllerAs : 'eventCtrl'
 
+	})
+
+	.when('/logout', {
+
+		templateUrl : 'User/Home.html',
+		controller : 'UserController',
+    	controllerAs : 'userCtrl'
+
 	});
 
-
-
-
-
-	
-	
-
-
-//	app.run(function($rootScope,$location,$cookieStore,$http){
-//		
-//		$rootScope.currentUser = $cookieStore.get('currentUser') || {};
-//		console.log($rootScope.currentUser)
-//		if ($rootScope.currentUser) {
-//            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.currentUser;
-//        }
-//	
-//		
-//	});
 });
+
+//Keep the user logged In after refresh.......
+
+	app.run(function($rootScope,$location,$cookieStore,$http){
+		
+		$rootScope.currentUser = $cookieStore.get('currentUser') || {};
+		console.log($rootScope.currentUser)
+		if ($rootScope.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.currentUser;
+        }
+	
+		
+	});
+
