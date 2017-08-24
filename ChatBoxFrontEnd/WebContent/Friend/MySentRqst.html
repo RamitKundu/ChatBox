@@ -2,8 +2,8 @@
 <div ng-include="'./User/UserProfile.html'"></div>
 
 <div class="row" ng-init="frndCtrl.seeAllSendRqst()">
-	<div class="col-md-9" ng-repeat="frnd in frndCtrl.friendlist">
-		<div class="row">
+	<div class="col-md-9" >
+		<div class="row" ng-repeat="frnd in frndCtrl.friendlist">
 			<div class="col-md-3" >
 				<img src="" class="img-circle">
 			</div>
@@ -30,7 +30,7 @@
 
 		</div>
 	</div>
-	
+	<div class="col-md-3">
 		<div><li><a href class="btn btn-primary" ng-click="frndCtrl.seeAllSendRqst()"><span
 			class="glyphicon glyphicon-edit"></span>SeeAllSentRequest</a></li></div>
 			<br>
@@ -41,5 +41,5 @@
 			<br>
 			<div><li><a href class="btn btn-primary" ng-click="frndCtrl.seeAllMyFriend()"><span
 			class="glyphicon glyphicon-edit"></span>SeeAllFriends</a></li></div>
-	
+	</div>
 </div>

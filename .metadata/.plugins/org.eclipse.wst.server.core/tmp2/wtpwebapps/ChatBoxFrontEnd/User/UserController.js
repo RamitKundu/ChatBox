@@ -96,6 +96,7 @@ app.controller('UserController', [
 				
 				$cookieStore.remove('currentUser');
 				UserService.logout();
+				alert("Logout Successfull...!!!");
 				$location.path('/logout');
 				
 			}

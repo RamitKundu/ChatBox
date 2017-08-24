@@ -132,7 +132,7 @@ public class UserController {
 	    }*/
 	
 
-	@GetMapping("/logout")
+	@PutMapping("/logout")
 	public ResponseEntity<User> Logout() {
 		user.setIsOnline("OffLine");
 		userDao.update(user);

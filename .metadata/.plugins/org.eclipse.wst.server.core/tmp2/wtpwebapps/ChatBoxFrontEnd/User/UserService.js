@@ -66,7 +66,7 @@ app.service('UserService', [
 				console.log("Logout Service Called");
 				
 				var deferred=$q.defer();
-				$http.get(RESTURL + '/logout')
+				$http.put(RESTURL + '/logout')
 				.then(
 				function(response){
 					

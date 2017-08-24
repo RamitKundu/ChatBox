@@ -230,9 +230,24 @@ app.config(function($routeProvider, $locationProvider) {
 
 });
 
-//Keep the user logged In after refresh.......
+   //Keep the user logged In after refresh.......
 
 	app.run(function($rootScope,$location,$cookieStore,$http){
+		
+		$rootScope.$on('$locationChangeStart', function (event, next, current){
+			 console.log("$locationChangeStart");
+			 
+			 var restrictedPage = $.inArray($location.path(), ['/afterlogin', '/userprofile']) === -1;
+			 var loggedIn = $rootScope.currentUser;
+			 if (restrictedPage && !loggedIn) {
+				 alert("You need to Login");
+	                $location.path('/');
+	            }
+		 
+			 
+		});	
+		
+	
 		
 		$rootScope.currentUser = $cookieStore.get('currentUser') || {};
 		console.log($rootScope.currentUser)
