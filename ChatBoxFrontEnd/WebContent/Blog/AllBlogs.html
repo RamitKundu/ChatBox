@@ -1,5 +1,5 @@
 
-<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/logout.html'"></div>
 <div ng-include="'./User/UserProfile.html'"></div>
 
 
@@ -65,11 +65,11 @@
 				ng-click="blogCtrl.getmyBlog()"><span
 					class="glyphicon glyphicon-hand-up"></span>SeeMyBlog</a><br> <br></li>
 		</div>
-		<div ng-show="currentUser.role!='admin'">
+		<!-- <div ng-show="currentUser.role!='admin'">
 			<li><a href class="btn btn-success"
 				ng-click="blogCtrl.getBlogList()"><span
 					class="glyphicon glyphicon-hand-up"></span>SeeAllBlog</a><br> <br></li>
-		</div>
+		</div> -->
 		<div ng-show="currentUser.role=='admin'">
 			<li><a href class="btn btn-success"
 				ng-click="blogCtrl.getBlogListAdmin()"><span

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Component("jobapp")
 @Entity
-public class JobApplication {
+public class JobApplication extends BaseDomain{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)

@@ -61,11 +61,12 @@ app.controller('UserController', [
 				console.log("UpdateController called");
 				
 				UserService.editUser(self.currentUser).then(
-						function(){
+						function(data){
+							$rootScope.currentUser=data;	
 						alert("Profile is Updated :)")
 							
 							$location.path('/goto');
-						},function() {
+						},function(error) {
 							console.log();		
 						});
 			}
@@ -94,16 +95,18 @@ app.controller('UserController', [
 				
 				console.log("Logout Controller called");
 				
-				$cookieStore.remove('currentUser');
-				UserService.logout();
-				alert("Logout Successfull...!!!");
-				$location.path('/logout');
-				
+				//$cookieStore.remove('currentUser');
+				UserService.logout($rootScope.currentUser).then(
+						function(response){
+							//$cookieStore.remove('currentUser');
+						alert("Logout Successfull...:)")
+							
+							$location.path('/');
+						},function(error) {
+							console.log(error);		
+						});
 			}
-			
-			
-			
-			
+		
 			
 			
 		} ])

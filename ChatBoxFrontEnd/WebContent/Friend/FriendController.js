@@ -3,7 +3,7 @@ app.controller('FriendController', [ 'FriendService', '$http', '$scope',
 		function(FriendService, $http, $scope, $location, $rootScope,$cookieStore) {
 
 			var self = this;
-			
+			//self.isDisabled=false;
 			self.searchAllFriends = function() {
 
 				console.log("FriendList  controller called");
@@ -64,7 +64,8 @@ app.controller('FriendController', [ 'FriendService', '$http', '$scope',
 					
 					self.friendlist = response.data;
 					console.log(self.friendlist);
-			        $location.path("/seeallfrndrqst")             
+			        $location.path("/seeallfrndrqst") 
+			       // self.isDisabled=true;
 				}, function(error) {
 					console.log(error);
 				});
@@ -79,6 +80,7 @@ app.controller('FriendController', [ 'FriendService', '$http', '$scope',
 				
                 FriendService.frndAccpted(frnd).then(function() {
 					alert("Friend Request Accepted");
+					$location.path("/gotoallfrnds");
 			                     
 				}, function(error) {
 					console.log(error);
@@ -93,6 +95,7 @@ app.controller('FriendController', [ 'FriendService', '$http', '$scope',
 				console.log("Frnd Rejected");
                 FriendService.frndRejected(frnd).then(function() {
 					alert("Friend Request Rejected");
+					$location.path("/gotoallfrnds");
 			                     
 				}, function(error) {
 					console.log(error);

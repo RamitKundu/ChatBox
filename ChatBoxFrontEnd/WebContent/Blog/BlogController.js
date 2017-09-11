@@ -17,7 +17,8 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
 				BlogService.addBlog(self.blog).then(function() {
 					
 					//self.blog = response.data;
-					alert("Your blog is posted successfully..!!!!")
+					alert("Your blog is posted successfully and waiting for admin's approval..!!!!")
+					 $location.path('/allblogs');
 					
 				}, function() {
 					console.log();
@@ -122,6 +123,7 @@ app.controller('BlogController', [ 'BlogService', '$http', '$scope',
   					
   					//self.blog = response.data;
   					alert("Update is posted successfully..!!!!")
+  					$location.path("/gettoallblogs");
   					
   				}, function() {
   					console.log();

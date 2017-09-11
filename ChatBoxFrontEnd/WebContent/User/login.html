@@ -1,5 +1,5 @@
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <style>
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -59,50 +59,57 @@ header .btn-header-login {
 	<div class="container" ng-controller="UserController as userCtrl">
 		<div class="row">
 			<div class="col-sm-6">
-				<h3><a href ="#!afterlogin">ChatBox</a></h3>
+				<h3>
+					<a href="#!afterlogin">ChatBox</a>
+				</h3>
 			</div>
-			
-			<form name="form" role="form">
-			<div class="col-sm-6 hidden-xs">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="form-group" ng-hide="currentUser.userId"> <!--  -->
-							<input type="text" class="form-control"
-								placeholder="Email Address" ng-model="userCtrl.guest.email" required >
-							<div class="login-bottom-text checkbox hidden-sm">
-								<label> <input type="checkbox" id=""> Keep me
-									sign in
-								</label>
+
+			<form name="loginform">
+				<div class="col-sm-6 hidden-xs">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group"
+								ng-class="{ 'has-error' : loginform.email.$invalid && !loginform.email.$pristine }">
+								<!-- ng-hide="currentUser.userId" -->
+								<input type="email" class="form-control"
+									placeholder="Email Address" ng-model="userCtrl.guest.email"
+									ng-required="true">
+								<p
+									ng-show="loginform.email.$invalid && !loginform .email.$pristine"
+									class="help-block">Enter a valid email.</p>
+								<div class="login-bottom-text checkbox hidden-sm">
+									<label> <input type="checkbox" id=""> Keep me
+										sign in
+									</label>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="form-group" ng-hide="currentUser.userId"><!--ng-hide="currentUser.userId"  -->
-							<input type="password" class="form-control"
-								placeholder="Password" ng-model="userCtrl.guest.password" required>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<!--ng-hide="currentUser.userId"  -->
+								<input type="password" class="form-control"
+									placeholder="Password" ng-model="userCtrl.guest.password"
+									ng-required="true">
 
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="form-group" ng-hide="currentUser.userId" ><!--  -->
-							<!-- <input type="submit" value="login" class="btn btn-default btn-header-login" ng-click="validateUser()"> -->
-							 <a href class="btn btn-default" ng-click="userCtrl.validateUser()">Login</a>
-							<!-- <input type="submit" class="btn btn-primary" ng-click="userCtrl.validateUser" value="Login" > -->
+						<div class="col-sm-2">
+							<div class="form-group">
+								<!--  -->
+								<!-- <input type="submit" value="login" class="btn btn-default btn-header-login" ng-click="validateUser()"> -->
+								<a href class="btn btn-default"
+									ng-click="userCtrl.validateUser()"
+									ng-disabled="loginform.$invalid">Login</a>
+								<!-- <input type="submit" class="btn btn-primary" ng-click="userCtrl.validateUser" value="Login" > -->
+							</div>
 						</div>
-					</div>
-					<!-- Logout   -->
-					
-					
-					<div class="col-sm-2">
-						<div class="form-group"  ng-show="currentUser.userId" ><!-- ng-show="currentUser.userId"-->
-							<!-- <input type="submit" value="login" class="btn btn-default btn-header-login" ng-click="validateUser()"> -->
-							 <a href class="btn btn-default" ng-click="userCtrl.logOut()">Logout</a>
-							<!-- <input type="submit" class="btn btn-primary" ng-click="userCtrl.validateUser" value="Login" > -->
-						</div>
+
+
+
+
 					</div>
 				</div>
-</div>
-</form>
-</div>
-</div>
+			</form>
+		</div>
+	</div>
 </header>

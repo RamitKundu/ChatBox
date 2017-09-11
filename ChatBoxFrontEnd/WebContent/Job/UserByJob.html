@@ -1,5 +1,5 @@
 <div class="row" ng-show="jobCtrl.updatebyadmin">
-<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/logout.html'"></div>
 <div ng-include="'./User/UserProfile.html'"></div>
 
 <div class="well">
@@ -33,7 +33,7 @@
 						<option value='R' data-ng-model="jobCtrl.j.status">Reject</option>
 						</select></td>
 						<td><input type="text" placeholder="Put Remarks..." data-ng-model="jobCtrl.j.remarks"></td> -->
-						<td><a href  ng-click="jobCtrl.editByAdmin(j)">Update</a></td>
+						<td><a href  ng-click="jobCtrl.editByAdmin(j)">Edit</a></td>
 				
 			</tr>
 			</tbody>

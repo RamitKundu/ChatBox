@@ -3,6 +3,8 @@ package com.niit.ChatBoxRestService.Controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,8 @@ public class JobController {
 	
 	JobApplication jobapp;
 	
-	
+	@Autowired
+	private HttpSession hs;
 	
 	@PostMapping("/addjob")
 	public ResponseEntity<Job> addJob(@RequestBody Job job){
@@ -52,10 +55,10 @@ public class JobController {
 
 	@PostMapping("/addapplyjob")
 	public ResponseEntity<JobApplication> addJob(@RequestBody JobApplication jobapp){
+		
 		jobapp.setDateApplied(new Date());;
 		jobapp.setStatus("New");
 		jobDao.addJob(jobapp);
-		
 		
 		return new ResponseEntity<JobApplication>(jobapp,HttpStatus.OK);
 		

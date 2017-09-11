@@ -95,7 +95,7 @@ figure.snip1174.hover a {
 }
 
 </style>
-<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/logout.html'"></div>
 <div ng-include="'./User/UserProfile.html'"></div>
 <br><br>
 <div class="services">
@@ -111,7 +111,7 @@ figure.snip1174.hover a {
       </figcaption>
     </figure>
 </div>
-<div class="col-md-4">
+<div class="col-md-4" ng-show="currentUser.role!='admin'">
     <figure class="snip1174 red col-md-4">
       <img src="img/social.png" alt="sq-sample33" />
       <figcaption>

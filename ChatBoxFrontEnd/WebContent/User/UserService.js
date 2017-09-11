@@ -4,8 +4,9 @@ app.service('UserService', [
 		'$http',
 		'$rootScope',
 		'$q',
+		'$cookieStore',
 		'RESTURL',
-	function($http, $rootScope, $q, RESTURL) {
+	function($http, $rootScope, $q,$cookieStore, RESTURL) {
 
 			this.addUser=function(user){
 				var deferred=$q.defer();
@@ -38,11 +39,11 @@ app.service('UserService', [
 				var deferred=$q.defer();
 				$http.post(RESTURL + '/updateuser',currentUser)
 				.then(
-				function(){
-					deferred.resolve();
+				function(response){
+					deferred.resolve(response.data);
 					},
-					function(){
-						deferred.reject();
+					function(error){
+						deferred.reject(error);
 					});
 				return deferred.promise;
 				}	
@@ -62,14 +63,14 @@ app.service('UserService', [
 				}		
 			
 			
-			this.logout=function(){
+			this.logout=function(data){
 				console.log("Logout Service Called");
 				
 				var deferred=$q.defer();
-				$http.put(RESTURL + '/logout')
+				$http.post(RESTURL + '/logout',data)
 				.then(
 				function(response){
-					
+				$cookieStore.remove('currentUser');
 					deferred.resolve(response);
 					},
 					function(error){

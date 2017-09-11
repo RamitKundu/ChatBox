@@ -16,31 +16,31 @@ label small {
 		<h3>
 			<b>Fill in the below Credentials</b>
 		</h3>
-		<form ng-submit="userCtrl.createJobProfile()">
+		<form ng-submit="userCtrl.createJobProfile()" name="form">
 		
 			<div class="form-group">
 				<label for="title">State <span class="require">*</span></label> <input
-					type="text" class="form-control" ng-model="userCtrl.users.state" />
+					type="text" class="form-control" ng-model="userCtrl.users.state" required />
 
 			</div>
 			<div class="form-group">
 				<label for="title">City <span class="require">*</span></label> <input
-					type="text" class="form-control" ng-model="userCtrl.users.city" />
+					type="text" class="form-control" ng-model="userCtrl.users.city" required />
 
 			</div>
 			<div class="form-group">
 				<label for="title">Qualification <span class="require">*</span></label> <input
-					type="text" class="form-control" ng-model="userCtrl.users.qualification" />
+					type="text" class="form-control" ng-model="userCtrl.users.qualification" required/>
 
 			</div>
 			<div class="form-group">
 				<label for="title">Experience <span class="require">*</span></label> <input
-					type="text" class="form-control" ng-model="userCtrl.users.experience" />
+					type="text" class="form-control" ng-model="userCtrl.users.experience" required/>
 
 			</div>
 
              <div class="form-group">
-    		        <button type="submit" class="btn btn-primary">
+    		        <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">
     		            Submit
     		        </button>
     		       

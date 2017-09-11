@@ -1,11 +1,11 @@
-<div ng-include="'./User/login.html'"></div>
+<div ng-include="'./User/logout.html'"></div>
 <div ng-include="'./User/UserProfile.html'"></div>
 
 
-<div class="row" ng-init="frndCtrl.seeAllFrndRqst()" >
-	<div class="col-md-9" >
+<div class="row" ng-init="frndCtrl.seeAllFrndRqst()">
+	<div class="col-md-9">
 		<div class="row" ng-repeat="frnd in frndCtrl.friendlist">
-			<div class="col-md-3" >
+			<div class="col-md-3">
 				<img src="" class="img-circle">
 			</div>
 			<div class="col-md-3">
@@ -24,28 +24,38 @@
 				</h5>
 			</div>
 			<div class="col-md-2">
-				<a href class="btn btn-success" ng-click="frndCtrl.acceptFrnd(frnd)" ng-show="frnd.friend.status=='New'"><span
-			class="glyphicon glyphicon-user"  ></span>Accept</a>
+				<a href class="btn btn-success" ng-click="frndCtrl.acceptFrnd(frnd)"
+					ng-show="frnd.friend.status=='New'" ><span
+					class="glyphicon glyphicon-user" ></span>Accept</a>
 			</div>
 			<div class="col-md-2">
-				<a href class="btn btn-danger" ng-click="frndCtrl.rejectFrnd(frnd)" ng-show="frnd.friend.status=='New'"><span
-			class="glyphicon glyphicon-warning-sign" value="Reject" ng-model="frndCtrl.rjctFrnd.status"></span>Reject</a>
+				<a href class="btn btn-danger" ng-click="frndCtrl.rejectFrnd(frnd)"
+					ng-show="frnd.friend.status=='New'" ><span
+					class="glyphicon glyphicon-warning-sign" value="Reject"
+					ng-model="frndCtrl.rjctFrnd.status" ></span>Reject</a>
 			</div>
 
-		</div>	
-		
+		</div>
+
 	</div>
-        
-        <div class="col-md-3">
-		<div><li><a href class="btn btn-primary" ng-click="frndCtrl.seeAllSendRqst()"><span
-			class="glyphicon glyphicon-edit"></span>SeeAllSentRequest</a></li></div>
-			<br>
-			<br>
-			<div><li><a href class="btn btn-primary" ng-click="frndCtrl.seeAllFrndRqst()"><span
-			class="glyphicon glyphicon-edit"></span>SeeAllFriendRequest</a></li></div>
-			<br>
-			<br>
-			<div><li><a href class="btn btn-primary" ng-click="frndCtrl.seeAllMyFriend()"><span
-			class="glyphicon glyphicon-edit"></span>SeeAllFriends</a></li></div>
+
+	<div class="col-md-3">
+		<div>
+			<li><a href class="btn btn-primary"
+				ng-click="frndCtrl.seeAllSendRqst()"><span
+					class="glyphicon glyphicon-edit"></span>SeeAllSentRequest</a></li>
+		</div>
+		<br> <br>
+		<div>
+			<li><a href class="btn btn-primary"
+				ng-click="frndCtrl.seeAllFrndRqst()"><span
+					class="glyphicon glyphicon-edit"></span>SeeAllFriendRequest</a></li>
+		</div>
+		<br> <br>
+		<div>
+			<li><a href class="btn btn-primary"
+				ng-click="frndCtrl.seeAllMyFriend()"><span
+					class="glyphicon glyphicon-edit"></span>SeeAllFriends</a></li>
+		</div>
 	</div>
 </div>

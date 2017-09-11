@@ -14,6 +14,7 @@ app.controller('JobController', [
 			self.joblist = [];
 			self.myappliedjob=false;
 			self.updatebyadmin=true;
+			 
 			// self.qual={};
 			// For posting jobs
 
@@ -55,10 +56,10 @@ app.controller('JobController', [
 				});
 			}
 			self.getJobList();
-
+			
 			// For Applied jobs
 			self.applyJob = function(j) {
-      
+		 
 				console.log("JobApply controller called");
 				console.log(j);
 				var data = {

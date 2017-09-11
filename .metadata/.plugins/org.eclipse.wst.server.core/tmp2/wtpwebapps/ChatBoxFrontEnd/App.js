@@ -1,8 +1,8 @@
 console.log("hello m at app.js");
-var app = angular.module('myApp', [ 'ngRoute','ngCookies','ngFileUpload' ]);
-app.constant('RESTURL', 'http://localhost:8005/ChatBoxRestService');
+var app = angular.module('myApp', [ 'ngRoute','ngCookies']);
+app.constant('RESTURL', 'http://localhost:8003/ChatBoxRestService');
 
-app.config(function($routeProvider, $locationProvider) {
+app.config(function($routeProvider) {
 	console.log("hello m at app.js")
 	$routeProvider.when('/', {
 		templateUrl : 'User/Home.html',
@@ -28,6 +28,12 @@ app.config(function($routeProvider, $locationProvider) {
 	    controller : 'BlogController',
 		controllerAs : 'blogCtrl'
 	})
+	
+	.when('/allblogs', {
+		templateUrl : 'Blog/AllBlogs.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
 	.when('/postblog', {
 		templateUrl : 'Blog/Blog.html',
 	    controller : 'BlogController',
@@ -35,6 +41,11 @@ app.config(function($routeProvider, $locationProvider) {
 	})
 	.when('/blogsadmin', {
 		templateUrl : 'Blog/BlogAdmin.html',
+	    controller : 'BlogController',
+		controllerAs : 'blogCtrl'
+	})
+	.when('/gettoallblogs', {
+		templateUrl : 'Blog/AllBlogs.html',
 	    controller : 'BlogController',
 		controllerAs : 'blogCtrl'
 	})
@@ -198,6 +209,13 @@ app.config(function($routeProvider, $locationProvider) {
     	controllerAs : 'frndCtrl'
 
 	})
+	.when('/gotoallfrnds', {
+
+		templateUrl : 'Friend/MyFriends.html',
+		controller : 'FriendController',
+    	controllerAs : 'frndCtrl'
+
+	})
 	
 	.when('/chat', {
 
@@ -220,40 +238,47 @@ app.config(function($routeProvider, $locationProvider) {
 
 	})
 
-	.when('/logout', {
+	.when('/', {
 
 		templateUrl : 'User/Home.html',
 		controller : 'UserController',
     	controllerAs : 'userCtrl'
 
-	});
-
-});
+	})
+	.otherwise({
+		redirectTo : '/'
+})
+	
+       });
 
    //Keep the user logged In after refresh.......
 
 	app.run(function($rootScope,$location,$cookieStore,$http){
 		
+		$rootScope.currentUser = $cookieStore.get('currentUser');
+		console.log($rootScope.currentUser)
+		if ($rootScope.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.currentUser;
+        }
+		
 		$rootScope.$on('$locationChangeStart', function (event, next, current){
 			 console.log("$locationChangeStart");
-			 
-			 var restrictedPage = $.inArray($location.path(), ['/afterlogin', '/userprofile']) === -1;
+	//Redirect to login page if user is not logged in		 
+			 var restrictedPage = $.inArray($location.path(), ['/','/userprofile']) === -1;
 			 var loggedIn = $rootScope.currentUser;
+			 console.log(loggedIn);
+			 console.log("Location not working....");
 			 if (restrictedPage && !loggedIn) {
-				 alert("You need to Login");
+				 console.log("Login not working again")
+				 //alert("You need to Login");
 	                $location.path('/');
+	                
 	            }
 		 
 			 
 		});	
 		
-	
 		
-		$rootScope.currentUser = $cookieStore.get('currentUser') || {};
-		console.log($rootScope.currentUser)
-		if ($rootScope.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.currentUser;
-        }
 	
 		
 	});
