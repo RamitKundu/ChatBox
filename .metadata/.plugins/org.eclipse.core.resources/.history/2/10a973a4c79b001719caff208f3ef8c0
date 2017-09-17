@@ -1,0 +1,61 @@
+<div ng-include="'./User/logout.html'"></div>
+<div ng-include="'./User/UserProfile.html'"></div>
+
+<div class="col-md-9 col-md-offset-1">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="col-md-1">
+						<strong><a class="post-title" href=""><b>Title:</b></a></strong>
+					</div>
+					<div class="col-md-3">
+						<strong><a class="post-title" href=""><b>{{blogCtrl.blogs.title}}</b></a></strong>
+					</div>
+
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-9">
+								<h5>
+									<b>Desp:</b>
+								</h5>
+								<b><p>{{blogCtrl.blogs.description}}</p></b>
+							</div>
+
+
+
+						</div>
+					</div>
+					<div class="panel-footer">
+						<b>View All Comments::-</b>
+					</div>
+					<div class="panel-footer"
+						data-ng-repeat="blogcmmnt in blogCtrl.blogs.comments">
+
+						<b>Comment</b>:&nbsp{{blogcmmnt.commentDsp}}
+						<br>
+						<b>CommentBy:&nbsp{{blogcmmnt.user.fullName}}</b>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	
+	<center>
+		<b>PostComments:</b>
+	</center>
+	<div class="input-group">
+	<br> <input type="text" placeholder="Join The Discussion...."
+		 style="border: 2px solid #85C1E9"
+		ng-model="blogCtrl.comment.commentDsp" />
+
+	<span class="input-group-btn">
+		<a href class="btn btn-primary btn-success"
+			ng-click="blogCtrl.createComment()"><span
+			class="glyphicon glyphicon-hand-up"></span>AddComment</a></span>
+	</div>
+</div>
+</div>

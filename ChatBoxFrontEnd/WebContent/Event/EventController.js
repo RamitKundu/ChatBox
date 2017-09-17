@@ -1,4 +1,4 @@
-app.controller('EventController', ['EventService',function(EventService,$http, $scope) {
+app.controller('EventController', ['EventService','$location','$http','$scope',function(EventService,$location,$http, $scope) {
 
 	var self = this;
 
@@ -13,7 +13,7 @@ app.controller('EventController', ['EventService',function(EventService,$http, $
 		console.log(formData.get('event'));
 		$http({
 			method : 'POST',
-			url : 'http://localhost:8005/ChatBoxRestService/uploadfile',
+			url : 'http://localhost:8003/ChatBoxRestService/uploadfile',
 			headers : {
 				'Content-Type' : undefined
 			},
@@ -28,6 +28,7 @@ app.controller('EventController', ['EventService',function(EventService,$http, $
 			alert("success");
 		}, function(error) {
 			alert('Event successfully posted');
+			$location.path("/allevents");
 		})
 
 	}
@@ -43,13 +44,13 @@ app.controller('EventController', ['EventService',function(EventService,$http, $
 			self.eventlist = response.data;
 			
 			console.log(self.eventlist);
-			
+			// $location.path('/allevents');
 			                     
 		}, function(error) {
 			console.log(error);
 		});
 	}
-	self.getEventList();
+	//self.getEventList();
 	
 	
 	

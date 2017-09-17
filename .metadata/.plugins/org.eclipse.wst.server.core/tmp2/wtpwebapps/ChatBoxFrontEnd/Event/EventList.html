@@ -161,9 +161,8 @@
 <div ng-include="'./User/UserProfile.html'"></div>
 
 
- <div class="container">
-		<div class="row" data-ng-repeat="event in eventCtrl.eventlist" >
-			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+		<div class="row" ng-init="eventCtrl.getEventList()" >
+			<div class="col-md-8 col-md-offset-1" data-ng-repeat="event in eventCtrl.eventlist">
 				<ul class="event-list">
 					<li>
 						<img alt="Images" src="file:///D:/Collaboration/{{event.imageURL}}" width="70px" height="70px" />
@@ -175,5 +174,14 @@
 					</li>
 					</ul>
 					</div>
+					<div class="col-md-4">
+	<div ng-show="currentUser.role=='admin'">
+						<center><a href="#!postevent" class="btn btn-success" ><span
+								class="glyphicon glyphicon-hand-up"></span>PostEvent</a></center><br> <br>
 					</div>
+	
+	
+	</div>
 					</div>
+					
+					

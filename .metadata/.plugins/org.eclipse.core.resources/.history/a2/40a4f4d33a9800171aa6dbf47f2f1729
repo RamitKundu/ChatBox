@@ -1,0 +1,7 @@
+<div ng-include="'./User/login.html'"></div>
+<br><br><br>
+<div ng-include="'./User/register.html'"></div>
+<footer>
+<div ng-include="'User/Footer.html'"></div>
+
+</footer>

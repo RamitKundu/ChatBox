@@ -237,14 +237,23 @@ app.config(function($routeProvider) {
     	controllerAs : 'eventCtrl'
 
 	})
+	.when('/postevent', {
 
-	.when('/', {
-
-		templateUrl : 'User/Home.html',
-		controller : 'UserController',
-    	controllerAs : 'userCtrl'
+		templateUrl : 'Event/Event.html',
+		controller : 'EventController',
+    	controllerAs : 'eventCtrl'
 
 	})
+	
+	.when('/allevents', {
+
+		templateUrl : 'Event/EventList.html',
+		controller : 'EventController',
+    	controllerAs : 'eventCtrl'
+
+	})
+
+
 	.otherwise({
 		redirectTo : '/'
 })

@@ -1,0 +1,64 @@
+app.controller('EventController', ['EventService','$location','$http','$scope',function(EventService,$location,$http, $scope) {
+
+	var self = this;
+
+	self.uploadFormData = function() {
+		console.log("Upload Controller called");
+		// headers: {'Content-Type': false},
+		// file2.files[0]
+		//alert(file2.files[0].name);
+		var formData = new FormData();
+		formData.append("file", file.files[0]);
+		formData.append("event", JSON.stringify(self.event));
+		console.log(formData.get('event'));
+		$http({
+			method : 'POST',
+			url : 'http://localhost:8003/ChatBoxRestService/uploadfile',
+			headers : {
+				'Content-Type' : undefined
+			},
+			data : formData,
+
+			transformRequest : function(data, headersGetterFunction) {
+				console.log(data);
+				return data;
+
+			}
+		}).then(function(response) {
+			alert("success");
+		}, function(error) {
+			alert('Event successfully posted');
+		})
+
+	}
+	
+	
+	// For All Event
+
+	self.getEventList = function() {
+
+		console.log("EventList controller called");
+		EventService.listEvent().then(function(response) {
+			
+			self.eventlist = response.data;
+			
+			console.log(self.eventlist);
+			 $location.path('/allevents');
+			                     
+		}, function(error) {
+			console.log(error);
+		});
+	}
+	self.getEventList();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}]);

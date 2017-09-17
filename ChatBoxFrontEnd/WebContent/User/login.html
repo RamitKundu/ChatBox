@@ -69,14 +69,12 @@ header .btn-header-login {
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="form-group"
-								ng-class="{ 'has-error' : loginform.email.$invalid && !loginform.email.$pristine }">
+							>
 								<!-- ng-hide="currentUser.userId" -->
 								<input type="email" class="form-control"
 									placeholder="Email Address" ng-model="userCtrl.guest.email"
 									ng-required="true">
-								<p
-									ng-show="loginform.email.$invalid && !loginform .email.$pristine"
-									class="help-block">Enter a valid email.</p>
+								
 								<div class="login-bottom-text checkbox hidden-sm">
 									<label> <input type="checkbox" id=""> Keep me
 										sign in
